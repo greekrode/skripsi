@@ -81,9 +81,4 @@ class RegisterController extends Controller
             'gender' => $gender
         ]);
     }
-
-    public function registerForm()
-    {
-        return view('welcome');
-    }
 }

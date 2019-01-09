@@ -11,17 +11,25 @@
 |
 */
 
-Auth::routes();
 
-Route::get('/login', 'Auth\LoginController@loginForm')->name('login');
-Route::post('/login', 'Auth\LoginController@login');
 
-Route::get('/register', 'Auth\RegisterController@registerForm')->name('register');
-Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/search', 'UserController@search')->name('user.search');
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', function () {
-        return view('home');
-    });
-    Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes(['verify' => true]);
+
+Route::post('/login','Auth\LoginController@loginUser')->name('login');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });
+
+Route::get('/', function() {
+    return view('pages.welcome');
+});
+
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/account/personal/{id}', 'HomeController@editPersonal')->name('account.personal.edit');
+    Route::post('/account/personal/{id}', 'HomeController@updatePersonal')->name('account.personal.update');
+});
+
