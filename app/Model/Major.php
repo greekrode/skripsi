@@ -17,4 +17,9 @@ class Major extends Model
     {
         return $this->belongsTo(Faculty::class, 'faculty_id');
     }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
 }

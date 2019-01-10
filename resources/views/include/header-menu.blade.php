@@ -6,7 +6,7 @@
 
             <a href="/"  class="logo">
                 <div class="img-wrap">
-                    <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Olympus" width="120">
+                    <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Alumni UPH" width="120">
                     {{--<img src="img/logo-colored-small.png" alt="Olympus" class="logo-colored">--}}
                 </div>
                 <div class="title-block">

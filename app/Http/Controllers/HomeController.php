@@ -7,6 +7,12 @@ use App\Model\Faculty;
 use App\Model\Major;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class HomeController extends Controller
 {
@@ -27,7 +33,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $user = Auth::user();
+        $country = Country::where('code', $user->country)->first();
+
+        $data = [
+            'user' => $user,
+            'country' => $country
+        ];
+
+        return view('pages.home')->with($data);
     }
 
     public function editPersonal($id)
@@ -55,9 +69,15 @@ class HomeController extends Controller
 
     public function updatePersonal(Request $request, $id)
     {
-//        $validator = Validator::make($request->all(), [
-//           'name' => ''
-//        ]);
+        $validator = Validator::make($request->all(), [
+           'first_name' => ['required'],
+            'last_name' => ['required'],
+            'phone_number' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $user = User::find($id);
         $user->first_name = $request->first_name;
@@ -76,8 +96,76 @@ class HomeController extends Controller
         $user->twitter = $request->twitter;
         $user->instagram = $request->instagram;
         $user->linked_in = $request->linked_in;
+
+        if ($user->save()) {
+            return redirect()->back()->with('success', 'Your information has been successfully updated!');
+        } else {
+            return redirect()->back()->with('error', 'Something is wrong. Please try again later!');
+        }
+    }
+
+    public function editPassword($id)
+    {
+        $user = User::find($id);
+        $data = [
+            'user' => $user
+        ];
+
+        return view('pages.account.password')->with($data);
+    }
+
+    public function updatePassword (Request $request, $id)
+    {
+        if (Auth::check()) {
+            $requestData = $request->all();
+            $validator= $this->validatePassword($requestData);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            } else {
+                if (!Hash::check($request->current_password, Auth::user()->password)) {
+                    // The passwords does not match
+                    return redirect()->back()->with('error',  'Your current password does not matches with the password you provided. Please try again.');
+                }
+
+                if (strcmp($request->current_password, $request->password) == 0) {
+                    // Current password and new password are same
+                    return redirect()->back()->with('error',  'New password cannot be same as your current password. Please choose a different password.');
+                }
+
+                // Change Password
+                $user = User::find($id);
+                $user->password = Hash::make($request->password);
+                $user->save();
+
+                return redirect()->back()->with('status',  'Password changed successfully !');
+            }
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function validatePassword(array $data)
+    {
+        $validator = Validator::make($data, [
+            'current_password' => ['required'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
+
+        return $validator;
+    }
+
+    public function uploadProfilePhoto(Request $request, $id)
+    {
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        Storage::disk('public')->put($image->getFilename().'.'.$extension, File::get($image));
+
+        $user = User::find($id);
+        $user->profile_mime = $image->getClientMimeType();
+        $user->profile_original_image = $image->getClientOriginalName();
+        $user->profile_image = $image->getFilename().'.'.$extension;
         $user->save();
 
-        return redirect()->route('account.personal.edit', ['id' => $id]);
+        return redirect()->back();
     }
 }

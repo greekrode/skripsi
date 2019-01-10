@@ -49,14 +49,22 @@ class LoginController extends Controller
     public function loginUser(Request $request)
     {
         $user = User::where('email', $request->email)->first();
-        /**
-         * Check for admin
-         */
-        if ($user->role_id === 1) {
-            return redirect('/admin');
+
+        if ($this->login($request)) {
+            /**
+             * Check for admin
+             */
+            if ($user->role_id === 1) {
+                return redirect('/admin');
+            }
+
+            if ($user->type === 'user') {
+                return redirect('/home');
+            }
+
+            if ($user->type === 'company') {
+                return redirect()->route('home');
+            }
         }
-
-        return $this->login($request);
-
     }
 }

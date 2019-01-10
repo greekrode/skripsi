@@ -80,6 +80,11 @@ ul {
     height: 110px
 }
 
+.header-spacer-big {
+    display: block;
+    height: 220px
+}
+
 .header-spacer-small {
     height: 70px
 }
@@ -382,7 +387,7 @@ ul {
 
 .top-header,
 .top-header-thumb {
-    position: relative
+    position: relative;
 }
 
 .view-all:hover {
@@ -515,7 +520,6 @@ ul {
 .top-header-thumb img {
     width: 100%;
     border-radius: 5px 5px 0 0;
-    overflow: hidden
 }
 
 .top-header-thumb:after {
@@ -6255,10 +6259,19 @@ fieldset[disabled] .checkbox input[type=checkbox] {
     padding-top: 0
 }
 
+.register-header {
+    padding-bottom: 100px !important;
+    margin-bottom: 0px !important;
+}
+
 .img-bottom {
     position: relative;
     display: block;
     margin: 20px auto -70px
+}
+
+.img-register {
+    margin-top: 40px !important;
 }
 
 .bg-account {
@@ -7190,7 +7203,7 @@ body.overlay-enable:before {
 .upload-photo-item {
     display: inline-block;
     vertical-align: middle;
-    width: 49%;
+    width: 100%;
     padding: 50px;
     text-align: center;
     fill: #c2c5d9;
@@ -12783,8 +12796,12 @@ ol ol li {
     background-color: #38bff1
 }
 
-.bg-dribbble {
-    background-color: #f74881
+.bg-instagram {
+    background-color: #4E433C
+}
+
+.bg-linkedin {
+    background-color: #0077B5
 }
 
 .bg-google {

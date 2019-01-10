@@ -462,7 +462,7 @@
 
                     </div>
                 </div>
-                <a href="02-ProfilePage.html" class="author-name fn">
+                <a href="{{ route('home') }}" class="author-name fn">
                     <div class="author-title">
                         {{ Auth::user()->first_name.' '.Auth::user()->last_name }} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-dropdown-arrow-icon"></use></svg>
                     </div>

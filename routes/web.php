@@ -11,10 +11,6 @@
 |
 */
 
-
-
-Route::get('/search', 'UserController@search')->name('user.search');
-
 Auth::routes(['verify' => true]);
 
 Route::post('/login','Auth\LoginController@loginUser')->name('login');
@@ -29,7 +25,25 @@ Route::get('/', function() {
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+
+    /**
+     * Edit account personal information
+     */
     Route::get('/account/personal/{id}', 'HomeController@editPersonal')->name('account.personal.edit');
     Route::post('/account/personal/{id}', 'HomeController@updatePersonal')->name('account.personal.update');
+
+    /**
+     * Edit account password
+     */
+    Route::get('/account/password/{id}', 'HomeController@editPassword')->name('account.password.edit');
+    Route::post('/account/password/{id}', 'HomeController@updatePassword')->name('account.password.update');
+
+    /**
+     * Upload photo
+     */
+    Route::post('/account/profile_photo/{id}', 'HomeController@uploadProfilePhoto')->name('account.profilephoto.upload');
 });
+
+Route::get('/search', 'UserController@search')->name('user.search');
+
 

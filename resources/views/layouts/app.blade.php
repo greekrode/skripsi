@@ -15,14 +15,14 @@
 <!-- ... end Fixed Sidebar Left -->
 
 
-{{--<!-- Fixed Sidebar Right -->--}}
-    {{--@include('include.right-sidebar')--}}
-{{--<!-- ... end Fixed Sidebar Right -->--}}
+<!-- Fixed Sidebar Right -->
+    @include('include.right-sidebar')
+<!-- ... end Fixed Sidebar Right -->
 
 
-{{--<!-- Fixed Sidebar Right-Responsive -->--}}
-    {{--@include('include.right-sidebar-responsive')--}}
-{{--<!-- ... end Fixed Sidebar Right-Responsive -->--}}
+<!-- Fixed Sidebar Right-Responsive -->
+    @include('include.right-sidebar-responsive')
+<!-- ... end Fixed Sidebar Right-Responsive -->
 
 
 <!-- Header-BP -->
@@ -33,8 +33,6 @@
 <!-- Responsive Header-BP -->
     @include('include.header-responsive')
 <!-- ... end Responsive Header-BP -->
-
-    <div class="header-spacer"></div>
 
     @yield('content')
 

@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Faculty extends Model
@@ -17,5 +18,10 @@ class Faculty extends Model
     public function majors()
     {
         return $this->hasMany(Major::class);
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
     }
 }

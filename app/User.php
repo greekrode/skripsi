@@ -33,4 +33,14 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class, 'faculty_id');
+    }
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class, 'major_id');
+    }
 }
