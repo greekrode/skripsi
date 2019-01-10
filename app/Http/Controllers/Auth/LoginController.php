@@ -42,20 +42,21 @@ class LoginController extends Controller
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
-     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      * @throws \Illuminate\Validation\ValidationException
      */
     public function loginUser(Request $request)
     {
         $user = User::where('email', $request->email)->first();
         /**
-         * Check for admin 
+         * Check for admin
          */
         if ($user->role_id === 1) {
-            return redirect();
+            return redirect('/admin');
         }
-        $this->login($request);
+
+        return $this->login($request);
+
     }
 }

@@ -16,7 +16,7 @@
             </a>
 
             <a href="#" class="open-responsive-menu js-open-responsive-menu">
-                <svg class="olymp-menu-icon"><use xlink:href="svg//icons.svg#olymp-menu-icon"></use></svg>
+                <svg class="olymp-menu-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-menu-icon"></use></svg>
             </a>
 
             <div class="nav nav-pills nav1 header-menu">
@@ -86,12 +86,12 @@
                             <a href="#" class="nav-link">Privacy Policy</a>
                         </li>
                         <li class="close-responsive-menu js-close-responsive-menu">
-                            <svg class="olymp-close-icon"><use xlink:href="svg//icons.svg#olymp-close-icon"></use></svg>
+                            <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
                         </li>
                         <li class="nav-item js-expanded-menu">
                             <a href="#" class="nav-link">
-                                <svg class="olymp-menu-icon"><use xlink:href="svg//icons.svg#olymp-menu-icon"></use></svg>
-                                <svg class="olymp-close-icon"><use xlink:href="svg//icons.svg#olymp-close-icon"></use></svg>
+                                <svg class="olymp-menu-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-menu-icon"></use></svg>
+                                <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
                             </a>
                         </li>
                     </ul>
