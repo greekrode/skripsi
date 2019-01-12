@@ -43,4 +43,14 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
     {
         return $this->belongsTo(Major::class, 'major_id');
     }
+
+    public function educations()
+    {
+        return $this->hasMany(Education::class);
+    }
+
+    public function employments()
+    {
+        return $this->hasMany(Employment::class);
+    }
 }

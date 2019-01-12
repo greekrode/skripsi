@@ -12887,10 +12887,43 @@ ol ol li {
 }
 
 .user-description .title,
-.w-personal-info li .title {
+.w-personal-info li .title
+{
     color: #515365;
     font-weight: 500
 }
+
+.w-personal-info li .title-edu {
+    color: #515365;
+    font-weight: 900;
+    font-size: 17px;
+}
+
+.w-personal-info li .sub-title {
+    display: block;
+    color: #515365;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+.edit-edu {
+    float: right;
+}
+
+.edu-hover a {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s linear,opacity 0.3s linear;
+}
+
+.edu-hover:hover a {
+    visibility: visible;
+    opacity:1;
+}
+
+.to-year-div {
+     display: none;
+ }
 
 .flip-button {
     box-sizing: content-box;

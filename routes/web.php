@@ -42,8 +42,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
      * Upload photo
      */
     Route::post('/account/profile_photo/{id}', 'HomeController@uploadProfilePhoto')->name('account.profilephoto.upload');
+
+    Route::post('/education','EducationController@store')->name('education.store');
+    Route::get('/education','EducationController@show')->name('education.show');
+    Route::post('/education/update','EducationController@update')->name('education.update');
+
+    Route::post('/employment', 'EmploymentController@store')->name('employment.store');
 });
 
 Route::get('/search', 'UserController@search')->name('user.search');
+
 
 
