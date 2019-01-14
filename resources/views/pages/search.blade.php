@@ -343,7 +343,7 @@
 
                                         <div class="form-group date-time-picker label-floating">
                                             <label class="control-label">Your Birthday</label>
-                                            <input name="datetimepicker" value="10/24/1984" />
+                                            <input name="datetimepicker" value="10/24/1984" class="datetimepicker"/>
                                             <span class="input-group-addon">
 											<svg class="olymp-calendar-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-calendar-icon"></use></svg>
 										</span>

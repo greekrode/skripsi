@@ -23,7 +23,7 @@ class CreateAwardsTable extends Migration
             $table->string('image')->nullable();
             $table->string('mime')->nullable();
             $table->string('original_image')->nullable();
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

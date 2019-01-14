@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManagerStatic as Image;
+use Kamaln7\Toastr\Facades\Toastr;
 
 class HomeController extends Controller
 {
@@ -98,9 +99,11 @@ class HomeController extends Controller
         $user->linked_in = $request->linked_in;
 
         if ($user->save()) {
-            return redirect()->back()->with('success', 'Your information has been successfully updated!');
+            Toastr::success('Your information has been successfully updated!', 'Success');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with('error', 'Something is wrong. Please try again later!');
+            Toastr::error('Something is wrong. Please try again later!', 'Error');
+            return redirect()->back();
         }
     }
 
@@ -137,7 +140,9 @@ class HomeController extends Controller
                 $user->password = Hash::make($request->password);
                 $user->save();
 
-                return redirect()->back()->with('status',  'Password changed successfully !');
+                Toastr::success('Password successfully changed!', 'Success');
+
+                return redirect()->back();
             }
         } else {
             return redirect('/');

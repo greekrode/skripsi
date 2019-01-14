@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Education;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Kamaln7\Toastr\Facades\Toastr;
 
 class EducationController extends Controller
 {
@@ -21,12 +22,13 @@ class EducationController extends Controller
         $education->user_id = Auth::user()->id;
         $education->save();
 
+        Toastr::success('New education has been added!', 'Success');
         return redirect()->back();
     }
 
     public function show(Request $request)
     {
-        $eduId = $request->get('edu_id');
+        $eduId = $request->get('eduId');
 
         $education = Education::find($eduId);
 
@@ -46,6 +48,19 @@ class EducationController extends Controller
         $education->description = $request->description;
         $education->save();
 
+        Toastr::success('Education has been updated!', 'Success');
+        return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+        $education = Education::find($id);
+        if ($education) {
+            $education->delete();
+            Toastr::success('Education has been deleted!', 'Success');
+        } else {
+            Toastr::error('Education can not be deleted!', 'Error');
+        }
         return redirect()->back();
     }
 }

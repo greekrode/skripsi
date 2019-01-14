@@ -104,7 +104,7 @@
 
                                         <div class="form-group date-time-picker label-floating">
                                             <label class="control-label">Your Birthday</label>
-                                            <input name="datetimepicker" id="birthday" value="{{ date_format(today(), 'd/m/Y') }}" required/>
+                                            <input name="datetimepicker" id="birthday" value="{{ date_format(today(), 'd/m/Y') }}" class="datetimepicker" required/>
                                             <span class="input-group-addon">
                                             <i class="fa fa-calendar-alt"></i>
                                         </span>

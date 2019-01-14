@@ -110,7 +110,20 @@
                                         @if ($loop->first)
                                             <li>
                                                 <span class="title-edu">{{ $employment->title }}</span>
-                                                <span class="edit-edu"><a id="edit-edu" href="#" onclick="editEdu({{ $employment->id }});"><i class="fa fa-pencil-alt"></i></a></span>
+                                                <span class="edit-edu">
+                                                    <a id="edit-edu" href="#" onclick="editEmp({{ $employment->id }});">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('employment.destroy', $employment->id)}}"
+                                                       onclick="event.preventDefault();
+                                                        document.getElementById('delete-emp-form').submit();">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                    <form id="delete-emp-form" action="{{ route('employment.destroy', $employment->id)}}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </span>
                                                 <span class="sub-title">{{ $employment->company }}</span>
                                                 <span class="sub-title">{{ $employment->location }}</span>
                                                 <span class="date">{{ $employment->start_date.' - '.$employment->end_date }}</span>
@@ -119,7 +132,20 @@
                                         @else
                                             <li class="edu-hover">
                                                 <span class="title-edu">{{ $employment->title }}</span>
-                                                <span class="edit-edu"><a id="edit-edu" href="#" onclick="editEdu({{ $employment->id }});"><i class="fa fa-pencil-alt"></i></a></span>
+                                                <span class="edit-edu">
+                                                    <a id="edit-edu" href="#" onclick="editEmp({{ $employment->id }});">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('employment.destroy', $employment->id)}}"
+                                                       onclick="event.preventDefault();
+                                                        document.getElementById('delete-emp-form').submit();">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                    <form id="delete-emp-form" action="{{ route('employment.destroy', $employment->id)}}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </span>
                                                 <span class="sub-title">{{ $employment->company }}</span>
                                                 <span class="sub-title">{{ $employment->location }}</span>
                                                 <span class="date">{{ $employment->start_date.' - '.$employment->end_date }}</span>
@@ -132,34 +158,10 @@
                                 <!-- ... end W-Personal-Info -->
 
                             </div>
-                            {{--<div class="col col-lg-6 col-md-6 col-sm-12 col-12">--}}
-
-
-                            {{--<!-- W-Personal-Info -->--}}
-
-                            {{--<ul class="widget w-personal-info item-block">--}}
-                            {{--<li>--}}
-                            {{--<span class="title">Digital Design Intern</span>--}}
-                            {{--<span class="date">2006-2008</span>--}}
-                            {{--<span class="text">Digital Design Intern for the “Multimedz” agency. Was in charge of the communication with the clients.</span>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                            {{--<span class="title">UI/UX Designer</span>--}}
-                            {{--<span class="date">2008-2013</span>--}}
-                            {{--<span class="text">UI/UX Designer for the “Daydreams” agency. </span>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                            {{--<span class="title">Senior UI/UX Designer</span>--}}
-                            {{--<span class="date">2013-Now</span>--}}
-                            {{--<span class="text">Senior UI/UX Designer for the “Daydreams” agency. I’m in charge of a ten person group, overseeing all the proyects and talking to potential clients.</span>--}}
-                            {{--</li>--}}
-                            {{--</ul>--}}
-
-                            {{--<!-- ... end W-Personal-Info -->--}}
-                            {{--</div>--}}
                         </div>
                     </div>
                 </div>
+
                 <div class="ui-block">
                     <div class="ui-block-title">
                         <h4 class="title">Education</h4>
@@ -178,7 +180,20 @@
                                         @if ($loop->first)
                                             <li>
                                                 <span class="title-edu">{{ $education->school }}</span>
-                                                <span class="edit-edu"><a id="edit-edu" href="#" onclick="editEdu({{ $education->id }});"><i class="fa fa-pencil-alt"></i></a></span>
+                                                <span class="edit-edu">
+                                                    <a id="edit-edu" href="#" onclick="editEdu({{ $education->id }});">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('education.destroy', $education->id)}}"
+                                                       onclick="event.preventDefault();
+                                                        document.getElementById('delete-edu-form').submit();">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                    <form id="delete-edu-form" action="{{ route('education.destroy', $education->id)}}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </span>
                                                 <span class="sub-title">{{ $education->degree.' degree, '.$education->field_of_study.' ,'. $education->grade }}</span>
                                                 <span class="date">{{ $education->start_year.' - '.$education->end_year }}</span>
                                                 <span class="text">{{ $education->description }}</span>
@@ -186,7 +201,20 @@
                                         @else
                                             <li class="edu-hover">
                                                 <span class="title-edu">{{ $education->school }}</span>
-                                                <span class="edit-edu"><a id="edit-edu" href="#" onclick="editEdu({{ $education->id }});"><i class="fa fa-pencil-alt"></i></a></span>
+                                                <span class="edit-edu">
+                                                    <a id="edit-edu" href="#" onclick="editEdu({{ $education->id }});">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('education.destroy', $education->id)}}"
+                                                       onclick="event.preventDefault();
+                                                        document.getElementById('delete-edu-form').submit();">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                    <form id="delete-edu-form" action="{{ route('education.destroy', $education->id)}}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </span>
                                                 <span class="sub-title">{{ $education->degree.' degree, '.$education->field_of_study.' ,'. $education->grade }}</span>
                                                 <span class="date">{{ $education->start_year.' - '.$education->end_year }}</span>
                                                 <span class="text">{{ $education->description }}</span>
@@ -198,31 +226,75 @@
                                 <!-- ... end W-Personal-Info -->
 
                             </div>
-                            {{--<div class="col col-lg-6 col-md-6 col-sm-12 col-12">--}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-block">
+                    <div class="ui-block-title">
+                        <h4 class="title">Award / Certification</h4>
+                        <a href="#" class="more" data-toggle="modal" data-target="#create-award"><svg class="olymp-plus-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-plus-icon"></use></svg></a>
+
+                    </div>
+                    <div class="ui-block-content">
+                        <div class="row">
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
 
 
-                                {{--<!-- W-Personal-Info -->--}}
+                                <!-- W-Personal-Info -->
 
-                                {{--<ul class="widget w-personal-info item-block">--}}
-                                    {{--<li>--}}
-                                        {{--<span class="title">Digital Design Intern</span>--}}
-                                        {{--<span class="date">2006-2008</span>--}}
-                                        {{--<span class="text">Digital Design Intern for the “Multimedz” agency. Was in charge of the communication with the clients.</span>--}}
-                                    {{--</li>--}}
-                                    {{--<li>--}}
-                                        {{--<span class="title">UI/UX Designer</span>--}}
-                                        {{--<span class="date">2008-2013</span>--}}
-                                        {{--<span class="text">UI/UX Designer for the “Daydreams” agency. </span>--}}
-                                    {{--</li>--}}
-                                    {{--<li>--}}
-                                        {{--<span class="title">Senior UI/UX Designer</span>--}}
-                                        {{--<span class="date">2013-Now</span>--}}
-                                        {{--<span class="text">Senior UI/UX Designer for the “Daydreams” agency. I’m in charge of a ten person group, overseeing all the proyects and talking to potential clients.</span>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
+                                <ul class="widget w-personal-info item-block">
+                                    @foreach ($user->awards as $award)
+                                        @if ($loop->first)
+                                            <li>
+                                                <span class="title-edu">{{ $award->name }}</span>
+                                                <span class="edit-edu">
+                                                    <a id="edit-awd" href="#" onclick="editAwd({{ $award->id }});">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('award.destroy', $award->id)}}"
+                                                       onclick="event.preventDefault();
+                                                        document.getElementById('delete-awd-form').submit();">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                    <form id="delete-awd-form" action="{{ route('award.destroy', $award->id)}}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                    </span>
+                                                <span class="sub-title">{{ $award->organization }}</span>
+                                                <span class="date">{{ $award->start_date.' - '.$award->end_date }}</span>
+                                                <span class="text">{{ $award->description }}</span>
+                                            </li>
+                                        @else
+                                            <li class="edu-hover">
+                                                <span class="title-edu">{{ $award->name }}</span>
+                                                <span class="edit-edu">
+                                                    <a id="edit-awd" href="#" onclick="editAwd({{ $award->id }});">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('award.destroy', $award->id)}}"
+                                                       onclick="event.preventDefault();
+                                                        document.getElementById('delete-awd-form').submit();">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                    <form id="delete-awd-form" action="{{ route('award.destroy', $award->id)}}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                    </span>
+                                                </span>
+                                                <span class="sub-title">{{ $award->organization }}</span>
+                                                <span class="date">{{ $award->start_date.' - '.$award->end_date }}</span>
+                                                <span class="text">{{ $award->description }}</span>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
 
-                                {{--<!-- ... end W-Personal-Info -->--}}
-                            {{--</div>--}}
+                                <!-- ... end W-Personal-Info -->
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -497,7 +569,7 @@
                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="form-group is-select">
                                     <label class="control-label">From Month</label>
-                                    <select class="selectpicker form-control" name="from_month" id="from_month">
+                                    <select class="selectpicker form-control" name="from_month" id="from_month" required>
                                         <option value="null">Month</option>
                                         <option value="Jan">January</option>
                                         <option value="Feb">February</option>
@@ -589,6 +661,95 @@
 
     <!-- ... end Window-popup Create Employment -->
 
+    <!-- Window-popup Create Award -->
+
+    <div class="modal fade" id="create-award" tabindex="-1" role="dialog" aria-labelledby="create-award" aria-hidden="true">
+        <div class="modal-dialog window-popup create-event" role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
+                </a>
+                <div class="modal-header">
+                    <h6 class="title">Add Award / Certification</h6>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('award.store') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group  is-empty">
+                            <label class="control-label">Name</label>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="" required autofocus>
+
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group  is-empty">
+                            <label class="control-label">Organization</label>
+                            <input id="organization" type="text" class="form-control{{ $errors->has('organization') ? ' is-invalid' : '' }}" name="organization" value="" required>
+
+                            @if ($errors->has('organization'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('organization') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group label-floating date-time-picker">
+                                    <label class="control-label">Start Date</label>
+                                    <input name="start_date" value="" required class="datetimepicker">
+                                    <span class="input-group-addon">
+                                        <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group date-time-picker label-floating">
+                                    <label class="control-label">End Date</label>
+                                    <input name="end_date" value="" required class="datetimepicker">
+                                    <span class="input-group-addon">
+                                        <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="control-label">Description</label>
+                            <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="" name="description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Image</label>
+                            <input type="file" id="image" name="image" class="form-control">
+                        </div>
+
+                        <div class="form-group  is-empty">
+                            <label class="control-label">Link</label>
+                            <input id="link" type="text" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link" value="">
+
+                            @if ($errors->has('link'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('link') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <button class="btn btn-breez btn-lg full-width" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Window-popup Create Award -->
+
     <!-- ...  Window-popup Edit Education -->
 
     <div class="modal fade" id="edit-education" tabindex="-1" role="dialog" aria-labelledby="edit-education" aria-hidden="true">
@@ -676,6 +837,241 @@
 
     <!-- ... end Window-popup Edit Education -->
 
+    <!-- Window-popup Edit Employment -->
+
+    <div class="modal fade" id="edit-employment" tabindex="-1" role="dialog" aria-labelledby="edit-employment" aria-hidden="true">
+        <div class="modal-dialog window-popup create-event" role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
+                </a>
+                <div class="modal-header">
+                    <h6 class="title">Edit Employment</h6>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('employment.update') }}">
+                        @csrf
+                        <input type="hidden" id="emp-id" name="emp_id">
+                        <div class="form-group">
+                            <label class="control-label">Title</label>
+                            <input id="title-edit" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="" required autofocus>
+
+                            @if ($errors->has('title'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Company</label>
+                            <input id="company-edit" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="" required>
+
+                            @if ($errors->has('company'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('company') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Location</label>
+                            <input id="location-edit" type="text" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="" required>
+
+                            @if ($errors->has('location'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('location') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group is-select">
+                                    <label class="control-label">From Month</label>
+                                    <select class="selectpicker form-control" name="from_month" id="from_month-edit" required>
+                                        <option value="null">Month</option>
+                                        <option value="Jan">January</option>
+                                        <option value="Feb">February</option>
+                                        <option value="Mar">March</option>
+                                        <option value="Apr">April</option>
+                                        <option value="May">May</option>
+                                        <option value="Jun">June</option>
+                                        <option value="Jul">July</option>
+                                        <option value="Aug">August</option>
+                                        <option value="Sep">September</option>
+                                        <option value="Oct">October</option>
+                                        <option value="Nov">November</option>
+                                        <option value="Dec">December</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group is-select">
+                                    <label class="control-label">From Year</label>
+                                    <select class="selectpicker form-control" name="from_year" id="from_year-edit-emp" required>
+                                        <option value="null">Year</option>
+                                        @for($i = date_format(new DateTime(), 'Y'); $i >= 1900; $i--)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12 to-year-div">
+                                <div class="form-group  is-select">
+                                    <label class="control-label">To Month</label>
+                                    <select class="selectpicker form-control" name="to_month" id="to_month-edit">
+                                        <option value="null">Month</option>
+                                        <option value="Jan">January</option>
+                                        <option value="Feb">February</option>
+                                        <option value="Mar">March</option>
+                                        <option value="Apr">April</option>
+                                        <option value="May">May</option>
+                                        <option value="Jun">June</option>
+                                        <option value="Jul">July</option>
+                                        <option value="Aug">August</option>
+                                        <option value="Sep">September</option>
+                                        <option value="Oct">October</option>
+                                        <option value="Nov">November</option>
+                                        <option value="Dec">December</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12 to-year-div">
+                                <div class="form-group  is-select">
+                                    <label class="control-label">To Year</label>
+                                    <select class="selectpicker form-control" name="to_year" id="to_year-edit-emp">
+                                        <option value="null">Year</option>
+                                        @for($i = date_format(new DateTime(), 'Y'); $i >= 1900; $i--)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="remember">
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="present" id="present-edit" type="checkbox" onchange="toDivEdit()" checked>
+                                        I currently work here
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="control-label">Description</label>
+                            <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="" name="description" id="description-edit-emp"></textarea>
+                        </div>
+
+                        <button class="btn btn-breez btn-lg full-width" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Window-popup Edit Employment -->
+
+    <!-- ...  Window-popup Edit Award -->
+
+    <div class="modal fade" id="edit-award" tabindex="-1" role="dialog" aria-labelledby="edit-award" aria-hidden="true">
+        <div class="modal-dialog window-popup create-event" role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
+                </a>
+                <div class="modal-header">
+                    <h6 class="title">Edit Award/Certification</h6>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('award.update') }}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" id="awd-id" name="awd_id">
+                        <div class="form-group">
+                            <label class="control-label">Name</label>
+                            <input id="name-edit" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="" required autofocus>
+
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Organization</label>
+                            <input id="organization-edit" type="text" class="form-control{{ $errors->has('organization') ? ' is-invalid' : '' }}" name="organization" value="">
+
+                            @if ($errors->has('organization'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('organization') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group label-floating date-time-picker">
+                                    <label class="control-label">Start Date</label>
+                                    <input name="start_date" value="" required class="datetimepicker" id="start_date-edit">
+                                    <span class="input-group-addon">
+                                        <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group date-time-picker label-floating">
+                                    <label class="control-label">End Date</label>
+                                    <input name="end_date" value="" required class="datetimepicker" id="end_date-edit">
+                                    <span class="input-group-addon">
+                                        <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="control-label">Description</label>
+                            <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="" name="description" id="description-edit-awd"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Image (Leave it blank if nothing to change)</label>
+                            <input type="file" id="image-edit" name="image" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Link</label>
+                            <input id="link-edit" type="text" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link" value="">
+
+                            @if ($errors->has('link'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('link') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <button class="btn btn-breez btn-lg full-width" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Window-popup Edit Award -->
+
 
     <a class="back-to-top" href="#">
         <img src="{{ asset('svg/back-to-top.svg') }}" alt="arrow" class="back-icon">
@@ -690,12 +1086,13 @@
                 url: '{{ route('education.show') }}',
                 method: 'get',
                 data: {
-                    edu_id: id
+                    eduId: id
                 },
                 success: function(response)
                 {
                     $('#edit-education').bind('show.bs.modal', function()
                     {
+                        $('#edu-id').val(response.id);
                         $('#school-edit').val(response.school);
                         $('#degree-edit').val(response.degree);
                         $('#field_of_study-edit').val(response.field_of_study);
@@ -703,12 +1100,79 @@
                         $('#from_year-edit').val(response.start_year);
                         $('#to_year-edit').val(response.end_year);
                         $('#description-edit').val(response.description);
-                        $('#edu-id').val(response.id);
                     });
                     $('#edit-education').modal();
                     console.log(response);
                 }
             });
+        }
+
+        function editEmp(id)
+        {
+            $.ajax({
+                url: '{{ route('employment.show') }}',
+                method: 'get',
+                data: {
+                    empId: id
+                },
+                success: function(response)
+                {
+                    $('#edit-employment').bind('show.bs.modal', function() {
+                        $('#emp-id').val(response.id);
+                        $('#title-edit').val(response.title);
+                        $('#company-edit').val(response.company);
+                        $('#location-edit').val(response.location);
+                        $('#from_month-edit').val(response.start_date.split(" ")[0]).change();
+                        $('#from_year-edit-emp').val(response.start_date.split(" ")[1]).change();
+                        if (response.end_date !== 'Present') {
+                            $('#present-edit').prop('checked', false);
+                            $('.to-year-div').show();
+                            $('#to_month-edit').val(response.end_date.split(" ")[0]).change();
+                            $('#to_year-edit-emp').val(response.end_date.split(" ")[1]).change();
+                        } else {
+                            $('#present-edit').prop('checked', true);
+                            $('.to-year-div').hide();
+                        }
+                        $('#description-edit-emp').val(response.description);
+                    });
+                    $('#edit-employment').modal();
+                    console.log(response);
+                }
+            });
+        }
+
+        function editAwd(id)
+        {
+            $.ajax({
+                url: '{{ route('award.show') }}',
+                method: 'get',
+                data: {
+                    awdId: id
+                },
+                success: function(response)
+                {
+                    $('#edit-award').bind('show.bs.modal', function() {
+                        $('#awd-id').val(response.id);
+                        $('#name-edit').val(response.name);
+                        $('#organization-edit').val(response.organization);
+                        $('#start_date-edit').val(response.start_date);
+                        $('#end_date-edit').val(response.end_date);
+                        $('#description-edit-awd').val(response.description);
+                        $('#link-edit').val(response.link);
+                    });
+                    $('#edit-award').modal();
+                    console.log(response);
+                }
+            });
+        }
+
+        function toDivEdit()
+        {
+            if ($('#present-edit').prop('checked') === true) {
+                $('.to-year-div').hide("slow");
+            } else {
+                $('.to-year-div').show("slow");
+            }
         }
 
         function toDiv()

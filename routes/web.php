@@ -45,9 +45,18 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::post('/education','EducationController@store')->name('education.store');
     Route::get('/education','EducationController@show')->name('education.show');
-    Route::post('/education/update','EducationController@update')->name('education.update');
+    Route::post('/education/update', 'EducationController@update')->name('education.update');
+    Route::delete('/education/{id}', 'EducationController@destroy')->name('education.destroy');
 
     Route::post('/employment', 'EmploymentController@store')->name('employment.store');
+    Route::get('/employment', 'EmploymentController@show')->name('employment.show');
+    Route::post('/employment/update', 'EmploymentController@update')->name('employment.update');
+    Route::delete('/employment/{id}', 'EmploymentController@destroy')->name('employment.destroy');
+
+    Route::post('/award', 'AwardController@store')->name('award.store');
+    Route::get('/award', 'AwardController@show')->name('award.show');
+    Route::post('/award/update', 'AwardController@update')->name('award.update');
+    Route::delete('/award/{id}', 'AwardController@destroy')->name('award.destroy');
 });
 
 Route::get('/search', 'UserController@search')->name('user.search');

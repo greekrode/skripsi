@@ -4,7 +4,6 @@
     @include('include.head')
 </head>
 <body>
-
 <!-- Fixed Sidebar Left -->
     @include('include.left-sidebar')
 <!-- ... end Fixed Sidebar Left -->
@@ -38,5 +37,6 @@
 
 <!-- JS Scripts -->
 @include('include.script')
+{!! Toastr::render() !!}
 </body>
 </html>
