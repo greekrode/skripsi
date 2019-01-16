@@ -19,9 +19,7 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/', function() {
-    return view('pages.welcome');
-});
+Route::get('/', 'HomeController@welcome')->name('welcome');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -57,6 +55,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/award', 'AwardController@show')->name('award.show');
     Route::post('/award/update', 'AwardController@update')->name('award.update');
     Route::delete('/award/{id}', 'AwardController@destroy')->name('award.destroy');
+
+    Route::get('/job/create', 'JobController@create')->name('job.create');
+    Route::post('/job', 'JobController@store')->name('job.store');
 });
 
 Route::get('/search', 'UserController@search')->name('user.search');

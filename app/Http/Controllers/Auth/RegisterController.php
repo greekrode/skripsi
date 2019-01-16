@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'datetimepicker' => ['required'],
-            'gender' => ['required']
+            'type' => ['required']
         ]);
     }
 
@@ -68,8 +68,10 @@ class RegisterController extends Controller
     {
         if ($data['gender'] === 'M') {
             $gender = 'male';
-        } else {
+        } else if ($data['gender'] === 'F') {
             $gender = 'female';
+        } else {
+            $gender = 'company';
         }
 
         return User::create([
@@ -78,7 +80,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'birthday' => $data['datetimepicker'],
-            'gender' => $gender
+            'gender' => $gender,
+            'type' => $data['type'],
         ]);
     }
 }

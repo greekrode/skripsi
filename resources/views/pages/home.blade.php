@@ -343,11 +343,11 @@
                             </li>
                             <li>
                                 <span class="title">Faculty:</span>
-                                <span class="text">{{ $user->faculty->name }}</span>
+                                <span class="text">{{ $user->faculty ? $user->faculty->name : '' }}</span>
                             </li>
                             <li>
                                 <span class="title">Major:</span>
-                                <span class="text">{{ $user->major->name }}</span>
+                                <span class="text">{{ $user->major ? $user->major->name : ''}}</span>
                             </li>
                             <li>
                                 <span class="title">Email:</span>
@@ -364,22 +364,33 @@
 
                         <div class="widget w-socials">
                             <h6 class="title">Other Social Networks:</h6>
+                            @if ($user->facebook)
                             <a href="{{ $user->facebook }}" class="social-item bg-facebook">
                                 <i class="fab fa-facebook-f" aria-hidden="true"></i>
                                 Facebook
                             </a>
+                            @endif
+
+                            @if ($user->twitter)
                             <a href="https://twitter.com/{{ $user->twitter }}" class="social-item bg-twitter">
                                 <i class="fab fa-twitter" aria-hidden="true"></i>
                                 Twitter
                             </a>
+                            @endif
+
+                            @if ($user->instagram)
                             <a href="https://instagram.com/{{ $user->instagram }}" class="social-item bg-instagram">
                                 <i class="fab fa-instagram" aria-hidden="true"></i>
                                 Instagram
                             </a>
+                            @endif
+
+                            @if ($user->linked_in)
                             <a href="{{ $user->linked_in }}" class="social-item bg-linkedin">
                                 <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                                 LinkedIn
                             </a>
+                            @endif
                         </div>
                         <!-- ... end W-Socials -->
                     </div>

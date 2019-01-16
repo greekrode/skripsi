@@ -17,14 +17,14 @@ use Kamaln7\Toastr\Facades\Toastr;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function welcome()
     {
-        $this->middleware('auth');
+
+        if (Auth::check()) {
+            return redirect()->route('home');
+        }
+
+        return view('pages.welcome');
     }
 
     /**
@@ -35,14 +35,22 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $country = Country::where('code', $user->country)->first();
+        if ($user->type === 'user') {
+            $country = Country::where('code', $user->country)->first();
+            $data = [
+                'user' => $user,
+                'country' => $country
+            ];
+
+            return view('pages.home')->with($data);
+        }
 
         $data = [
-            'user' => $user,
-            'country' => $country
+            'user' => $user
         ];
 
-        return view('pages.home')->with($data);
+        return view('pages.company.home')->with($data);
+
     }
 
     public function editPersonal($id)
@@ -97,6 +105,13 @@ class HomeController extends Controller
         $user->twitter = $request->twitter;
         $user->instagram = $request->instagram;
         $user->linked_in = $request->linked_in;
+
+        if ($user->type === 'company') {
+            $user->website = $request->website;
+            $user->address = $request->address;
+            $user->zip_code = $request->zip_code;
+            $user->size = $request->size;
+        }
 
         if ($user->save()) {
             Toastr::success('Your information has been successfully updated!', 'Success');

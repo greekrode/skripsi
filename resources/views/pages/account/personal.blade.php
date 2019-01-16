@@ -58,13 +58,28 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group date-time-picker label-floating">
-                                        <label class="control-label">Your Birthday</label>
-                                        <input name="datetimepicker" value="{{ old('birthday') ?? $user->birthday }}" required>
-                                        <span class="input-group-addon">
-                                            <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
-                                        </span>
-                                    </div>
+                                    @if ($user->type === 'user')
+                                        <div class="form-group date-time-picker label-floating">
+                                            <label class="control-label">Your Birthday</label>
+                                            <input name="datetimepicker" value="{{ old('birthday') ?? $user->birthday }}" required class="datetimepicker">
+                                            <span class="input-group-addon">
+                                                <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
+                                            </span>
+                                        </div>
+                                    @else
+                                        <div class="form-group is-select label-floating">
+                                            <label class="control-label">Year Founded</label>
+                                            <select class="selectpicker form-control" name="datetimepicker">
+                                                @for($i = date_format(new DateTime(), 'Y'); $i >= 1900; $i--)
+                                                    @if ($i == $user->birthday)
+                                                        <option value="{{ $i }}" selected>{{ $i }}</option>
+                                                    @else
+                                                        <option value="{{ $i }}">{{ $i }}</option>
+                                                    @endif
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    @endif
                                 </div>
 
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
@@ -95,6 +110,7 @@
                                         @endif
                                     </div>
 
+                                    @if ($user->type === 'user')
                                     <div class="form-group label-floating{{ $user->birthplace || old('birthplace') ? '' : ' is-empty' }}">
                                         <label class="control-label">Your Birthplace</label>
                                         <input id="birthplace" type="text" class="form-control{{ $errors->has('birthplace') ? ' is-invalid' : '' }}" name="birthplace" value="{{ old('birthplace') ?? $user->birthplace }}">
@@ -102,6 +118,57 @@
                                         @if ($errors->has('birthplace'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('birthplace') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    @else
+                                        <div class="form-group label-floating{{ $user->size || old('size') ? '' : ' is-empty' }}">
+                                            <label class="control-label">Company Size</label>
+                                            <input id="size" type="number" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}" name="size" value="{{ old('size') ?? $user->size }}" required>
+
+                                            @if ($errors->has('size'))
+                                                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('size') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="col col-lg-10 col-md-10 col-sm-12 col-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Address</label>
+                                        <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') ?? $user->address }}" required>
+
+                                        @if ($errors->has('address'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('address') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col col-lg-2 col-md-2 col-sm-12 col-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Zip Code</label>
+                                        <input id="zip_code" type="text" class="form-control{{ $errors->has('zip_code') ? ' is-invalid' : '' }}" name="zip_code" value="{{ old('zip_code') ?? $user->zip_code }}" required>
+
+                                        @if ($errors->has('zip_code'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('zip_code') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group label-floating{{ $user->city || old('city') ? '' : ' is-empty' }}">
+                                        <label class="control-label">Your City</label>
+                                        <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') ?? $user->city }}" required>
+
+                                        @if ($errors->has('city'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('city') }}</strong>
                                             </span>
                                         @endif
                                     </div>
@@ -128,27 +195,8 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--<div class="col col-lg-4 col-md-4 col-sm-12 col-12">--}}
-                                    {{--<div class="form-group label-floating is-select">--}}
-                                        {{--<label class="control-label">Your State / Province</label>--}}
-                                        {{--<select class="selectpicker form-control">--}}
-                                            {{--<option value="CA">California</option>--}}
-                                            {{--<option value="TE">Texas</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                    <div class="form-group label-floating{{ $user->city || old('city') ? '' : ' is-empty' }}">
-                                        <label class="control-label">Your City</label>
-                                        <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') ?? $user->city }}" required>
 
-                                        @if ($errors->has('city'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('city') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
+                                @if ($user->type === 'user')
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label">Your Faculty</label>
@@ -191,9 +239,15 @@
                                         @endif
                                     </div>
                                 </div>
+                                @endif
+
                                 <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group label-floating">
-                                        <label class="control-label">Write a little description about you</label>
+                                        @if ($user->type === 'user')
+                                            <label class="control-label">Write a little description about you</label>
+                                        @else
+                                            <label class="control-label">Describe your company</label>
+                                        @endif
                                         <textarea class="form-control{{ $errors->has('about') ? ' is-invalid' : '' }}" placeholder="" name="about">{{ old('about') ?? $user->about }}</textarea>
 
                                         @if ($errors->has('about'))
@@ -209,9 +263,14 @@
                                         {{--<input class="form-control" placeholder="" type="text">--}}
                                     {{--</div>--}}
                                 </div>
+
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="form-group label-floating{{ $user->occupation || old('occupation') ? '' : ' is-empty' }}">
-                                        <label class="control-label">Your Occupation</label>
+                                        @if ($user->type === 'user')
+                                            <label class="control-label">Your Occupation</label>
+                                        @else
+                                            <label class="control-label">Company Specialization (separate each with comma)</label>
+                                        @endif
                                         <input id="occupation" type="text" class="form-control{{ $errors->has('occupation') ? ' is-invalid' : '' }}" name="occupation" value="{{ old('occupation') ?? $user->occupation }}">
 
                                         @if ($errors->has('occupation'))
@@ -220,30 +279,20 @@
                                             </span>
                                         @endif
                                     </div>
-                                    {{--<div class="form-group label-floating is-select">--}}
-                                        {{--<label class="control-label">Status</label>--}}
-                                        {{--<select class="selectpicker form-control">--}}
-                                            {{--<option value="MA">Married</option>--}}
-                                            {{--<option value="FE">Not Married</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-
-                                    {{--<div class="form-group label-floating">--}}
-                                        {{--<label class="control-label">Political Incline</label>--}}
-                                        {{--<input class="form-control" placeholder="" type="text" value="Democrat">--}}
-                                    {{--</div>--}}
                                 </div>
+
+                                @if ($user->type === 'user')
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label">Your Gender</label>
                                         <select class="selectpicker form-control" name="gender" required>
-                                            @if ($user->gender === 'MA')
+                                            @if ($user->gender === 'M')
                                                 <option value="{{ $user->gender }}">Male</option>
-                                            @elseif ($user->gender === 'FE')
+                                            @elseif ($user->gender === 'F')
                                                 <option value="{{ $user->gender }}">Female</option>
                                             @else
-                                                <option value="MA">Male</option>
-                                                <option value="FE">Female</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
                                             @endif
                                         </select>
 
@@ -254,7 +303,20 @@
                                         @endif
                                     </div>
                                 </div>
+                                @endif
+
                                 <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group with-icon label-floating{{ $user->website || old('website') ? '' : ' is-empty' }}">
+                                        <label class="control-label">Website</label>
+                                        <input id="website" type="text" class="form-control{{ $errors->has('website') ? ' is-invalid' : '' }}" name="website" value="{{ old('website') ?? $user->website }}">
+
+                                        @if ($errors->has('website'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('website') }}</strong>
+                                            </span>
+                                        @endif
+                                        <i class="fa fa-globe c-globe" aria-hidden="true"></i>
+                                    </div>
                                     <div class="form-group with-icon label-floating{{ $user->facebook || old('facebook') ? '' : ' is-empty' }}">
                                         <label class="control-label">Facebook Account URL</label>
                                         <input id="facebook" type="text" class="form-control{{ $errors->has('facebook') ? ' is-invalid' : '' }}" name="facebook" value="{{ old('facebook') ?? $user->facebook }}">

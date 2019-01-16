@@ -101,8 +101,8 @@
                                                 <label class="control-label">Your Birthday</label>
                                                 <input name="datetimepicker" id="birthday" value="{{ date_format(today(), 'd/m/Y') }}" required/>
                                                 <span class="input-group-addon">
-                                            <i class="fa fa-calendar-alt"></i>
-                                        </span>
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </span>
 
                                                 @if ($errors->has('datetimepicker'))
                                                     <span class="invalid-feedback" role="alert">
@@ -112,8 +112,23 @@
                                             </div>
 
                                             <div class="form-group label-floating is-select">
+                                                <label class="control-label">Role</label>
+                                                <select class="selectpicker form-control" name="type" id="type" onchange="genderHide(this)">
+                                                    <option value="user">Student</option>
+                                                    <option value="company">Company</option>
+                                                </select>
+
+                                                @if ($errors->has('type'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('type') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+
+                                            <div class="form-group label-floating is-select gender-div">
                                                 <label class="control-label">Your Gender</label>
-                                                <select class="selectpicker form-control" name="gender" id="gender" required>
+                                                <select class="selectpicker form-control" name="gender" id="gender">
+                                                    <option></option>
                                                     <option value="M">Male</option>
                                                     <option value="F">Female</option>
                                                 </select>
@@ -150,4 +165,15 @@
         <img class="img-bottom" src="{{ asset('img/group-bottom.png') }}" alt="friends">
         <img class="img-rocket" src="{{ asset('img/rocket.png') }}" alt="rocket">
     </div>
+
+    <script>
+        function genderHide()
+        {
+            if ($('#type').val() === 'company') {
+                $('.gender-div').hide("slow");
+            } else {
+                $('.gender-div').show("slow");
+            }
+        }
+    </script>
 @endsection

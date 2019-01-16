@@ -12849,6 +12849,10 @@ ol ol li {
     color: #38bff1
 }
 
+.c-globe {
+    color: #1ABC9C
+}
+
 .c-dribbble {
     color: #f74881
 }
@@ -12923,7 +12927,11 @@ ol ol li {
 
 .to-year-div {
      display: none;
- }
+}
+
+.gender-div {
+    display: none;
+}
 
 .flip-button {
     box-sizing: content-box;

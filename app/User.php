@@ -3,9 +3,11 @@
 namespace App;
 
 use App\Model\Award;
+use App\Model\Country;
 use App\Model\Education;
 use App\Model\Employment;
 use App\Model\Faculty;
+use App\Model\Job;
 use App\Model\Major;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -22,7 +24,7 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
      */
     protected $fillable = [
         'first_name', 'last_name', 'email', 'password', 'birthday', 'gender', 'birthplace', 'occupation', 'facebook', 'faculty_id', 'major_id', 'twitter', 'instagram', 'phone_number', 'country', 'city',
-        'profile_image', 'profile_mime', 'profile_original_image', 'header_image', 'header_mime', 'header_original_image', 'linked_in', 'about'
+        'profile_image', 'profile_mime', 'profile_original_image', 'header_image', 'header_mime', 'header_original_image', 'linked_in', 'about', 'type'
     ];
 
     /**
@@ -57,5 +59,10 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
     public function awards()
     {
         return $this->hasMany(Award::class);
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
     }
 }
