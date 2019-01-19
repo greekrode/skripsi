@@ -20,4 +20,9 @@ class Job extends Model
     {
         return $this->belongsTo(Seniority::class, 'seniority_id');
     }
+
+    public function type()
+    {
+        return $this->belongsTo(EmploymentType::class, 'type_id');
+    }
 }

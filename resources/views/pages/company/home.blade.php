@@ -111,27 +111,32 @@
                                             <li>
                                                 <span class="title-edu">{{ $job->title }}</span>
                                                 <span class="edit-edu">
-                                                    <a id="edit-edu" href="#" onclick="editEmp({{ $job->id }});">
+                                                    <a href="#" onclick="showJob({{ $job->id }})">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    <a id="edit-edu" href="{{ route('job.edit', $job->id) }}">
                                                         <i class="fa fa-pencil-alt"></i>
                                                     </a>
-                                                    <a href="{{ route('employment.destroy', $job->id)}}"
-                                                       onclick="event.preventDefault();
+                                                   <a href="{{ route('employment.destroy', $job->id)}}"
+                                                      onclick="event.preventDefault();
                                                         document.getElementById('delete-emp-form').submit();">
                                                         <i class="fa fa-trash-alt"></i>
                                                     </a>
-                                                    <form id="delete-emp-form" action="{{ route('employment.destroy', $job->id)}}" method="POST" style="display: none;">
+                                                    <form id="delete-emp-form" action="{{ route('job.destroy', $job->id)}}" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
                                                 </span>
                                                 <span class="sub-title">{{ $job->city.', '.$job->country }}</span>
-                                                <span class="sub-title">Posted at {{ date_format($job->created_at,'M jS, Y') }}</span>
+                                                <span class="sub-title">{{ $job->type->name }} &#8226; {{ $job->seniority->name }}</span>
+                                                <span class="date">Posted at {{ date_format($job->created_at,'M jS, Y') }}</span>
+                                                <span class="text">{{ $job->industry }}</span>
                                             </li>
                                         @else
                                             <li class="edu-hover">
                                                 <span class="title-edu">{{ $job->title }}</span>
                                                 <span class="edit-edu">
-                                                    <a id="edit-edu" href="#" onclick="editEmp({{ $job->id }});">
+                                                    <a id="edit-edu" href="{{ route('job.edit', $job->id) }}">
                                                         <i class="fa fa-pencil-alt"></i>
                                                     </a>
                                                     <a href="{{ route('employment.destroy', $job->id)}}"
@@ -139,13 +144,15 @@
                                                         document.getElementById('delete-emp-form').submit();">
                                                         <i class="fa fa-trash-alt"></i>
                                                     </a>
-                                                    <form id="delete-emp-form" action="{{ route('employment.destroy', $job->id)}}" method="POST" style="display: none;">
+                                                    <form id="delete-emp-form" action="{{ route('job.destroy', $job->id)}}" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
                                                 </span>
                                                 <span class="sub-title">{{ $job->city.', '.$job->country }}</span>
-                                                <span class="sub-title">{{ date_format($job->created_at,'d-m-Y H:i') }}</span>
+                                                <span class="sub-title">{{ $job->type->name }} &#8226; {{ $job->seniority->name }}</span>
+                                                <span class="date">Posted at {{ date_format($job->created_at,'M jS, Y') }}</span>
+                                                <span class="text">{{ $job->industry }}</span>
                                             </li>
                                         @endif
                                     @endforeach
@@ -287,9 +294,122 @@
 
     <!-- ... end Window-popup Update Profile Photo -->
 
+    <!-- Edit My Poll Popup -->
+
+    <div class="modal fade" id="edit-my-poll-popup" tabindex="-1" role="dialog" aria-labelledby="edit-my-poll-popup" aria-hidden="true">
+        <div class="modal-dialog window-popup edit-my-poll-popup" role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+                </a>
+                <div class="modal-body">
+                    <div class="control-block-button post-control-button">
+                        <a href="#" class="btn btn-control has-i bg-facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#" class="btn btn-control has-i bg-twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="edit-my-poll-head bg-primary">
+                        <div class="head-content">
+                            <h2 class="title"></h2>
+                            <div class="place inline-items">
+                                <svg class="olymp-add-a-place-icon">
+                                    <use xlink:href="{{ asset('svg/icons.svg') }}#olymp-add-a-place-icon"></use>
+                                </svg>
+                                <span id="city"></span>
+                                <span id="type"></span>
+                            </div>
+                        </div>
+
+                        <img class="poll-img" src="{{ asset('img/poll.png') }}" alt="screen">
+                    </div>
+
+                    <div class="edit-my-poll-content">
+                        <div id="description-job" class="description-job">
+                        </div>
+
+                        <form class="resume-form">
+                            <h3>Submit Application</h3>
+                            <div class="row">
+                                <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Your Name</label>
+                                        <input class="form-control" placeholder="" value="James Spiegel" type="text">
+                                    </div>
+                                </div>
+                                <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Your Email</label>
+                                        <input class="form-control" placeholder="" value="jspiegel@yourmail.com" type="email">
+                                    </div>
+                                </div>
+
+                                <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Portfolio URL</label>
+                                        <input class="form-control" placeholder="" value="spiegelcodes.com" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group with-button">
+                                        <input class="form-control" placeholder="Browse Resume..." value="" type="text">
+                                        <button class="bg-grey">
+                                            <svg class="olymp-computer-icon">
+                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group label-floating is-empty">
+                                        <label class="control-label">Your Comment</label>
+                                        <textarea class="form-control" placeholder=""></textarea>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-lg full-width">Submit Application</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Edit My Poll Popup -->
+
+
     <a class="back-to-top" href="#">
         <img src="{{ asset('svg/back-to-top.svg') }}" alt="arrow" class="back-icon">
     </a>
 
+    <script>
+        function showJob(id)
+        {
+            $.ajax({
+                url: '{{ route('job.show') }}',
+                method: 'get',
+                data: {
+                    jobId: id
+                },
+                success: function(response)
+                {
+                    $('#edit-my-poll-popup').bind('show.bs.modal', function() {
+                        $("h2.title").html(response[0].title);
+                        $("span#city").html((response[0].city + ', ' + response[0].country).toUpperCase());
+                        $("span#type").html((response[1].name + ' &#8226; ' + response[2].name).toUpperCase());
+                        $("#description-job").html(response[0].description);
+                    });
+                    $('#edit-my-poll-popup').modal();
+                    console.log(response);
+                }
+            });
+        }
+    </script>
 
 @endsection
+

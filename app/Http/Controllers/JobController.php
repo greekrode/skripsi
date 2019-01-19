@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Country;
+use App\Model\EmploymentType;
 use App\Model\Job;
 use App\Model\Seniority;
 use Illuminate\Http\Request;
@@ -15,9 +16,11 @@ class JobController extends Controller
     {
         $countries = Country::all();
         $seniorities = Seniority::all();
+        $types = EmploymentType::all();
         $data = [
             'countries' => $countries,
-            'seniorities' => $seniorities
+            'seniorities' => $seniorities,
+            'types' => $types
         ];
 
         return view('pages.company.job.create')->with($data);
@@ -30,13 +33,75 @@ class JobController extends Controller
         $job->city = $request->city;
         $job->country = $request->country;
         $job->seniority_id = $request->seniority;
-        $job->type = $request->type;
         $job->description = $request->description;
         $job->industry = $request->industry;
+        $job->type_id = $request->type;
         $job->user_id = Auth::user()->id;
         $job->save();
 
         Toastr::success('New job has been added!', 'Success');
         return redirect()->route('home');
+    }
+
+    public function edit($id)
+    {
+        $job = Job::find($id);
+        $countries = Country::all();
+        $seniorities = Seniority::all();
+        $types = EmploymentType::all();
+        $data = [
+            'job' => $job,
+            'countries' => $countries,
+            'seniorities' => $seniorities,
+            'types' => $types
+        ];
+
+        return view('pages.company.job.edit')->with($data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $job = Job::find($id);
+        $job->title = $request->title;
+        $job->city = $request->city;
+        $job->country = $request->country;
+        $job->seniority_id = $request->seniority;
+        $job->description = $request->description;
+        $job->industry = $request->industry;
+        $job->type_id = $request->type;
+        $job->save();
+
+        Toastr::success('Job has been successfully edited', 'Success');
+        return redirect()->route('home');
+    }
+
+    public function destroy($id)
+    {
+        $job = Job::find($id);
+        if ($job) {
+            $job->delete();
+            Toastr::success('Job has been deleted!', 'Success');
+        } else {
+            Toastr::error('Job can not be deleted!', 'Error');
+        }
+        return redirect()->back();
+    }
+
+    public function show(Request $request)
+    {
+        $jobId = $request->get('jobId');
+
+        $job = Job::find($jobId)->first();
+        $type = $job->type;
+        $seniority = $job->seniority;
+
+        $data = [
+            $job,
+            $type,
+            $seniority
+        ];
+
+
+        return response($data);
     }
 }

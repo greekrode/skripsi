@@ -56,8 +56,12 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/award/update', 'AwardController@update')->name('award.update');
     Route::delete('/award/{id}', 'AwardController@destroy')->name('award.destroy');
 
+    Route::get('/job', 'JobController@show')->name('job.show');
     Route::get('/job/create', 'JobController@create')->name('job.create');
     Route::post('/job', 'JobController@store')->name('job.store');
+    Route::get('/job/{id}', 'JobController@edit')->name('job.edit');
+    Route::post('job/{id}', 'JobController@update')->name('job.update');
+    Route::delete('/job/{id}', 'JobController@destroy')->name('job.destroy');
 });
 
 Route::get('/search', 'UserController@search')->name('user.search');

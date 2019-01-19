@@ -13,10 +13,10 @@
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
                     <div class="main-header-content">
-                        <h1>Add a new job!</h1>
+                        <h1>Edit job</h1>
                         {{--<p>Here in the forums you’ll be able to easily create and manage categories and topics to share with the--}}
-                            {{--community! We included some of the most used topics, like music, comics, movies, and community, each one with a cool--}}
-                            {{--and customizable illustration so you can have fun with them! </p>--}}
+                        {{--community! We included some of the most used topics, like music, comics, movies, and community, each one with a cool--}}
+                        {{--and customizable illustration so you can have fun with them! </p>--}}
                     </div>
                 </div>
             </div>
@@ -33,17 +33,17 @@
 
                 <div class="ui-block">
                     <div class="ui-block-title bg-blue">
-                        <h6 class="title c-white">Add New Job</h6>
+                        <h6 class="title c-white">Edit Job</h6>
                     </div>
                     <div class="ui-block-content">
 
-                        <form method="POST" action="{{ route('job.store') }}">
+                        <form method="POST" action="{{ route('job.update', $job->id) }}">
                             @csrf
                             <div class="row">
                                 <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Job Title</label>
-                                        <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="" required autofocus>
+                                        <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') ?? $job->title }}" required autofocus>
 
                                         @if ($errors->has('title'))
                                             <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                                 <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="form-group label-floating">
                                         <label class="control-label">City</label>
-                                        <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="" required>
+                                        <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') ?? $job->city }}" required>
 
                                         @if ($errors->has('city'))
                                             <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                                         <label class="control-label">Country</label>
                                         <select class="selectpicker form-control" name="country" data-live-search="true" required>
                                             @foreach ($countries as $country)
-                                                <option value="{{ $country->code }}">{{ $country->name }}</option>
+                                                <option value="{{ $country->code }}" {{ $country->code === $job->country ? ' selected' : '' }}>{{ $country->name }}</option>
                                             @endforeach
                                         </select>
 
@@ -88,7 +88,7 @@
                                         <label class="control-label">Seniority Level</label>
                                         <select class="selectpicker form-control" name="seniority" data-live-search="true" required>
                                             @foreach ($seniorities as $seniority)
-                                                <option value="{{ $seniority->id }}">{{ $seniority->name }}</option>
+                                                <option value="{{ $seniority->id }}" {{ $seniority->id === $job->seniority_id ? ' selected' : ''}}>{{ $seniority->name }}</option>
                                             @endforeach
                                         </select>
 
@@ -105,7 +105,7 @@
                                         <label class="control-label">Employment Type</label>
                                         <select class="selectpicker form-control" name="type" data-live-search="true" required>
                                             @foreach ($types as $type)
-                                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                <option value="{{ $type->id }}" {{ $type->id === $job->type_id ? ' selected'  : ''}}>{{ $type->name }}</option>
                                             @endforeach
                                         </select>
 
@@ -120,7 +120,7 @@
                                 <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Industry (separate with comma)</label>
-                                        <input id="industry" type="text" class="form-control{{ $errors->has('industry') ? ' is-invalid' : '' }}" name="industry" value="" required autofocus>
+                                        <input id="industry" type="text" class="form-control{{ $errors->has('industry') ? ' is-invalid' : '' }}" name="industry" value=" {{ old('industry') ?? $job->industry }}" required autofocus>
 
                                         @if ($errors->has('industry'))
                                             <span class="invalid-feedback" role="alert">
@@ -133,7 +133,7 @@
                                 <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
                                         <label class="control-label">Description</label>
-                                        <textarea id="description" name="description" class="form-control">{!! old('description') !!}</textarea>
+                                        <textarea id="description" name="description" class="form-control">{!! old('description') ?? $job->description !!}</textarea>
                                     </div>
                                 </div>
 
@@ -142,7 +142,7 @@
                                 </div>
 
                                 <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                    <button type="submit" class="btn btn-blue btn-lg full-width">Post Job</button>
+                                    <button type="submit" class="btn btn-blue btn-lg full-width">Save changes</button>
                                 </div>
                             </div>
                         </form>

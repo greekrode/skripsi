@@ -36,5 +36,6 @@
 <script defer src="{{ asset('js/fontawesome-all.js') }}"></script>
 
 <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+<script style="{{ asset('js/confirm-bootstrap.js') }}"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
