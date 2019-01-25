@@ -332,48 +332,48 @@
                         <div id="description-job" class="description-job">
                         </div>
 
-                        <form class="resume-form">
-                            <h3>Submit Application</h3>
-                            <div class="row">
-                                <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Your Name</label>
-                                        <input class="form-control" placeholder="" value="James Spiegel" type="text">
-                                    </div>
-                                </div>
-                                <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Your Email</label>
-                                        <input class="form-control" placeholder="" value="jspiegel@yourmail.com" type="email">
-                                    </div>
-                                </div>
+                        {{--<form class="resume-form">--}}
+                            {{--<h3>Submit Application</h3>--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+                                    {{--<div class="form-group label-floating">--}}
+                                        {{--<label class="control-label">Your Name</label>--}}
+                                        {{--<input class="form-control" placeholder="" value="James Spiegel" type="text">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+                                    {{--<div class="form-group label-floating">--}}
+                                        {{--<label class="control-label">Your Email</label>--}}
+                                        {{--<input class="form-control" placeholder="" value="jspiegel@yourmail.com" type="email">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
-                                <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Portfolio URL</label>
-                                        <input class="form-control" placeholder="" value="spiegelcodes.com" type="text">
-                                    </div>
-                                </div>
+                                {{--<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+                                    {{--<div class="form-group label-floating">--}}
+                                        {{--<label class="control-label">Portfolio URL</label>--}}
+                                        {{--<input class="form-control" placeholder="" value="spiegelcodes.com" type="text">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
-                                <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group with-button">
-                                        <input class="form-control" placeholder="Browse Resume..." value="" type="text">
-                                        <button class="bg-grey">
-                                            <svg class="olymp-computer-icon">
-                                                <use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                    <div class="form-group label-floating is-empty">
-                                        <label class="control-label">Your Comment</label>
-                                        <textarea class="form-control" placeholder=""></textarea>
-                                    </div>
-                                    <a href="#" class="btn btn-primary btn-lg full-width">Submit Application</a>
-                                </div>
-                            </div>
-                        </form>
+                                {{--<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+                                    {{--<div class="form-group with-button">--}}
+                                        {{--<input class="form-control" placeholder="Browse Resume..." value="" type="text">--}}
+                                        {{--<button class="bg-grey">--}}
+                                            {{--<svg class="olymp-computer-icon">--}}
+                                                {{--<use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>--}}
+                                            {{--</svg>--}}
+                                        {{--</button>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">--}}
+                                    {{--<div class="form-group label-floating is-empty">--}}
+                                        {{--<label class="control-label">Your Comment</label>--}}
+                                        {{--<textarea class="form-control" placeholder=""></textarea>--}}
+                                    {{--</div>--}}
+                                    {{--<a href="#" class="btn btn-primary btn-lg full-width">Submit Application</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</form>--}}
                     </div>
                 </div>
             </div>

@@ -104,6 +104,14 @@
       <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
       <path value="$PROJECT_DIR$/vendor/oriceon/toastr-5-laravel" />
       <path value="$PROJECT_DIR$/vendor/unisharp/laravel-filemanager" />
+      <path value="$PROJECT_DIR$/vendor/sofa/eloquence-mappable" />
+      <path value="$PROJECT_DIR$/vendor/sofa/eloquence-base" />
+      <path value="$PROJECT_DIR$/vendor/sofa/eloquence-mutable" />
+      <path value="$PROJECT_DIR$/vendor/sofa/eloquence-validable" />
+      <path value="$PROJECT_DIR$/vendor/sofa/hookable" />
+      <path value="$PROJECT_DIR$/vendor/sofa/eloquence-metable" />
+      <path value="$PROJECT_DIR$/vendor/sofa/eloquence" />
+      <path value="$PROJECT_DIR$/vendor/laravel/scout" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

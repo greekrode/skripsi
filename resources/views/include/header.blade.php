@@ -473,4 +473,39 @@
         </div>
     </div>
 
+    <script>
+        var topUserSearch = $('.js-user-search');
+
+        topUserSearch.on('change', function () {
+            $.ajax()
+        });
+
+        topUserSearch.selectize({
+            persist: false,
+            maxItems: 3,
+            valueField: 'name',
+            labelField: 'name',
+            searchField: ['name'],
+            options: [],
+            render: {
+                option: function(item, escape) {
+                    return '<div class="inline-items">' +
+                        (item.image ? '<div class="author-thumb"><img src="' + escape(item.image) + '" alt="avatar"></div>' : '') +
+                        '<div class="notification-event">' +
+                        (item.name ? '<span class="h6 notification-friend"></a>' + escape(item.name) + '</span>' : '') +
+                        (item.message ? '<span class="chat-message-item">' + escape(item.message) + '</span>' : '') +
+                        '</div>'+
+                        (item.icon ? '<span class="notification-icon"><svg class="' + escape(item.icon) + '"><use xlink:href="icons/icons.svg#' + escape(item.icon) + '"></use></svg></span>' : '') +
+                        '</div>';
+                },
+                item: function(item, escape) {
+                    var label = item.name;
+                    return '<div>' +
+                        '<span class="label">' + escape(label) + '</span>' +
+                        '</div>';
+                }
+            }
+        });
+    </script>
+
 </header>

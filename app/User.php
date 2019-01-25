@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Model\Award;
-use App\Model\Country;
 use App\Model\Education;
 use App\Model\Employment;
 use App\Model\Faculty;
@@ -11,11 +10,22 @@ use App\Model\Job;
 use App\Model\Major;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Scout\Searchable;
 
 class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
 {
     use Notifiable;
+    use Searchable;
+
+    /**
+     * Get the value used to index the model.
+     *
+     * @return mixed
+     */
+    public function getScoutKey()
+    {
+        return $this->name;
+    }
 
     /**
      * The attributes that are mass assignable.
