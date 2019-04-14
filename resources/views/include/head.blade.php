@@ -26,6 +26,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/fonts.css') }}">
 
+<!-- Datatables -->
+
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 

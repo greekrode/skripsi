@@ -5,18 +5,23 @@
     </div>
 
     <div class="header-content-wrapper">
-        <form class="search-bar w-search notification-list friend-requests">
-            <div class="form-group with-button">
-                <input class="form-control js-user-search" placeholder="Search here people or pages..." type="text">
-                <button>
-                    <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
-                </button>
-            </div>
-        </form>
+        {{--<form class="search-bar w-search notification-list friend-requests">--}}
+            {{--<div class="form-group with-button">--}}
+                {{--<input class="form-control" placeholder="Search here people or pages..." type="text" id="user-search">--}}
+                {{--<button>--}}
+                    {{--<svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>--}}
+                {{--</button>--}}
+            {{--</div>--}}
+        {{--</form>--}}
 
-        <a href="#" class="link-find-friend">Find Friends</a>
 
         <div class="control-block">
+
+            <div class="control-icon more has-items">
+                <a href="{{ route('search.job') }}" style="text-decoration: none; color: white;">
+                    <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
+                </a>
+            </div>
 
             <div class="control-icon more has-items">
                 <svg class="olymp-happy-face-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-happy-face-icon"></use></svg>
@@ -472,40 +477,5 @@
 
         </div>
     </div>
-
-    <script>
-        var topUserSearch = $('.js-user-search');
-
-        topUserSearch.on('change', function () {
-            $.ajax()
-        });
-
-        topUserSearch.selectize({
-            persist: false,
-            maxItems: 3,
-            valueField: 'name',
-            labelField: 'name',
-            searchField: ['name'],
-            options: [],
-            render: {
-                option: function(item, escape) {
-                    return '<div class="inline-items">' +
-                        (item.image ? '<div class="author-thumb"><img src="' + escape(item.image) + '" alt="avatar"></div>' : '') +
-                        '<div class="notification-event">' +
-                        (item.name ? '<span class="h6 notification-friend"></a>' + escape(item.name) + '</span>' : '') +
-                        (item.message ? '<span class="chat-message-item">' + escape(item.message) + '</span>' : '') +
-                        '</div>'+
-                        (item.icon ? '<span class="notification-icon"><svg class="' + escape(item.icon) + '"><use xlink:href="icons/icons.svg#' + escape(item.icon) + '"></use></svg></span>' : '') +
-                        '</div>';
-                },
-                item: function(item, escape) {
-                    var label = item.name;
-                    return '<div>' +
-                        '<span class="label">' + escape(label) + '</span>' +
-                        '</div>';
-                }
-            }
-        });
-    </script>
 
 </header>

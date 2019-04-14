@@ -14,6 +14,7 @@
 Auth::routes(['verify' => true]);
 
 Route::post('/login','Auth\LoginController@loginUser')->name('login');
+Route::post('/admin/logout','Auth\LogoutController@logout')->name('voyager.logout');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -62,6 +63,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/job/{id}', 'JobController@edit')->name('job.edit');
     Route::post('job/{id}', 'JobController@update')->name('job.update');
     Route::delete('/job/{id}', 'JobController@destroy')->name('job.destroy');
+
+    Route::get('search/job', 'SearchController@job')->name('search.job');
 });
 
 Route::get('/search', 'UserController@search')->name('user.search');

@@ -6,21 +6,24 @@ use App\Model\Country;
 use App\Model\Faculty;
 use App\Model\Major;
 use App\User;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\ImageManagerStatic as Image;
 use Kamaln7\Toastr\Facades\Toastr;
 
 class HomeController extends Controller
 {
     public function welcome()
     {
-
         if (Auth::check()) {
+            if (Auth::user()->role_id === 1) {
+                return redirect('/admin');
+            }
+
             return redirect()->route('home');
         }
 
@@ -30,10 +33,14 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {
+        if (Auth::user()->role_id === 1) {
+            return redirect('/admin');
+        }
+
         $user = Auth::user();
         if ($user->type === 'user') {
             $country = Country::where('code', $user->country)->first();

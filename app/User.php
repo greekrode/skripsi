@@ -10,22 +10,14 @@ use App\Model\Job;
 use App\Model\Major;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Laravel\Scout\Searchable;
+use Sofa\Eloquence\Eloquence;
 
 class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
 {
     use Notifiable;
-    use Searchable;
+    use Eloquence;
 
-    /**
-     * Get the value used to index the model.
-     *
-     * @return mixed
-     */
-    public function getScoutKey()
-    {
-        return $this->name;
-    }
+    protected $searchableColumns = ['first_name', 'last_name'];
 
     /**
      * The attributes that are mass assignable.
