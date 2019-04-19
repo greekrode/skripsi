@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mail\JobApplication;
 use App\Model\Award;
 use App\Model\Education;
 use App\Model\Employment;
@@ -66,5 +67,10 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
     public function jobs()
     {
         return $this->hasMany(Job::class);
+    }
+
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class);
     }
 }

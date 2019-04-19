@@ -65,6 +65,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::delete('/job/{id}', 'JobController@destroy')->name('job.destroy');
 
     Route::get('search/job', 'SearchController@job')->name('search.job');
+    Route::get('/search/filter', 'SearchController@filter')->name('search.filter');
+
+    Route::post('/job_application', 'JobApplicationController@create')->name('job_application.create');
 });
 
 Route::get('/search', 'UserController@search')->name('user.search');
