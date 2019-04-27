@@ -135,6 +135,7 @@
                                     @endif
                                 </div>
 
+                                @if ($user->type === 'company')
                                 <div class="col col-lg-10 col-md-10 col-sm-12 col-12">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Address</label>
@@ -160,6 +161,7 @@
                                         @endif
                                     </div>
                                 </div>
+                                @endif
 
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="form-group label-floating{{ $user->city || old('city') ? '' : ' is-empty' }}">
@@ -197,7 +199,7 @@
                                 </div>
 
                                 @if ($user->type === 'user')
-                                <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label">Your Faculty</label>
                                         <select class="selectpicker form-control" name="faculty" required data-live-search="true">
@@ -218,7 +220,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label">Your Major</label>
                                         <select class="selectpicker form-control" required name="major" required data-live-search="true">
@@ -236,6 +238,18 @@
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('major') }}</strong>
                                             </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col col-lg-2 col-md-2 col-sm-12 col-12">
+                                    <div class="form-group label-floating{{ $user->gpa || old('gpa') ? '' : ' is-empty' }}">
+                                        <label class="control-label">Your GPA</label>
+                                        <input id="gpa" type="text" class="form-control{{ $errors->has('gpa') ? ' is-invalid' : '' }}" name="gpa" value="{{ old('gp') ?? $user->gpa }}" required>
+
+                                        @if ($errors->has('gpa'))
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('gpa') }}</strong>
+                                        </span>
                                         @endif
                                     </div>
                                 </div>
@@ -306,6 +320,7 @@
                                 @endif
 
                                 <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    @if ($user->type === 'company')
                                     <div class="form-group with-icon label-floating{{ $user->website || old('website') ? '' : ' is-empty' }}">
                                         <label class="control-label">Website</label>
                                         <input id="website" type="text" class="form-control{{ $errors->has('website') ? ' is-invalid' : '' }}" name="website" value="{{ old('website') ?? $user->website }}">
@@ -317,6 +332,7 @@
                                         @endif
                                         <i class="fa fa-globe c-globe" aria-hidden="true"></i>
                                     </div>
+                                    @endif
                                     <div class="form-group with-icon label-floating{{ $user->facebook || old('facebook') ? '' : ' is-empty' }}">
                                         <label class="control-label">Facebook Account URL</label>
                                         <input id="facebook" type="text" class="form-control{{ $errors->has('facebook') ? ' is-invalid' : '' }}" name="facebook" value="{{ old('facebook') ?? $user->facebook }}">

@@ -61,13 +61,16 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/job/create', 'JobController@create')->name('job.create');
     Route::post('/job', 'JobController@store')->name('job.store');
     Route::get('/job/{id}', 'JobController@edit')->name('job.edit');
-    Route::post('job/{id}', 'JobController@update')->name('job.update');
+    Route::post('/job/{id}', 'JobController@update')->name('job.update');
     Route::delete('/job/{id}', 'JobController@destroy')->name('job.destroy');
 
-    Route::get('search/job', 'SearchController@job')->name('search.job');
+    Route::get('/search/job', 'SearchController@job')->name('search.job');
     Route::get('/search/filter', 'SearchController@filter')->name('search.filter');
 
+    Route::get('/job_application', 'JobApplicationController@index')->name('job_application.show');
     Route::post('/job_application', 'JobApplicationController@create')->name('job_application.create');
+
+    Route::get('user/{id}','UserController@view')->name('user.view');
 });
 
 Route::get('/search', 'UserController@search')->name('user.search');

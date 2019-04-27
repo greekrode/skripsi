@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('header-title',' Home')
-@section('title', 'Home')
+@section('header-title',' User')
+@section('title', 'User')
 @section('content')
     <div class="header-spacer-big"></div>
     <div class="container">
@@ -16,12 +16,12 @@
                             <div class="row">
                                 <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
                                     {{--<ul class="profile-menu">--}}
-                                        {{--<li>--}}
-                                            {{--<a href="05-ProfilePage-About.html" class="active">About</a>--}}
-                                        {{--</li>--}}
-                                        {{--<li>--}}
-                                            {{--<a href="06-ProfilePage.html">Friends</a>--}}
-                                        {{--</li>--}}
+                                    {{--<li>--}}
+                                    {{--<a href="05-ProfilePage-About.html" class="active">About</a>--}}
+                                    {{--</li>--}}
+                                    {{--<li>--}}
+                                    {{--<a href="06-ProfilePage.html">Friends</a>--}}
+                                    {{--</li>--}}
                                     {{--</ul>--}}
                                 </div>
                                 <div class="col col-lg-2 ml-auto col-md-2 col-sm-12 col-12">
@@ -38,21 +38,6 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="control-block-button">
-                                    <div class="btn btn-control bg-primary more">
-                                    <svg class="olymp-settings-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-settings-icon"></use></svg>
-
-                                    <ul class="more-dropdown more-with-triangle triangle-bottom-right">
-                                        <li>
-                                            <a href="#" data-toggle="modal" data-target="#update-profile-photo">Update Profile Photo</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('account.personal.edit', ['id' => $user->id]) }}">Account Settings</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -352,31 +337,31 @@
                         <div class="widget w-socials">
                             <h6 class="title">Other Social Networks:</h6>
                             @if ($user->facebook)
-                            <a href="{{ $user->facebook }}" class="social-item bg-facebook">
-                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                Facebook
-                            </a>
+                                <a href="{{ $user->facebook }}" class="social-item bg-facebook">
+                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                    Facebook
+                                </a>
                             @endif
 
                             @if ($user->twitter)
-                            <a href="https://twitter.com/{{ $user->twitter }}" class="social-item bg-twitter">
-                                <i class="fab fa-twitter" aria-hidden="true"></i>
-                                Twitter
-                            </a>
+                                <a href="https://twitter.com/{{ $user->twitter }}" class="social-item bg-twitter">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                    Twitter
+                                </a>
                             @endif
 
                             @if ($user->instagram)
-                            <a href="https://instagram.com/{{ $user->instagram }}" class="social-item bg-instagram">
-                                <i class="fab fa-instagram" aria-hidden="true"></i>
-                                Instagram
-                            </a>
+                                <a href="https://instagram.com/{{ $user->instagram }}" class="social-item bg-instagram">
+                                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                                    Instagram
+                                </a>
                             @endif
 
                             @if ($user->linked_in)
-                            <a href="{{ $user->linked_in }}" class="social-item bg-linkedin">
-                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                                LinkedIn
-                            </a>
+                                <a href="{{ $user->linked_in }}" class="social-item bg-linkedin">
+                                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                                    LinkedIn
+                                </a>
                             @endif
                         </div>
                         <!-- ... end W-Socials -->
@@ -507,7 +492,7 @@
                         </div>
 
                         <button class="btn btn-breez btn-lg full-width" type="submit">Save</button>
-                </form>
+                    </form>
                 </div>
             </div>
         </div>

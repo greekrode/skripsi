@@ -9358,8 +9358,9 @@ ol ol li {
 }
 
 .event-item .description {
-    max-width: 260px;
+    max-width: 300px;
     font-size: 12px;
+    padding: 0 15px;
     margin-bottom: 0
 }
 
@@ -9468,10 +9469,6 @@ ol ol li {
     padding-right: 30px
 }
 
-.event-item-table .add-event {
-    text-align: right
-}
-
 .event-item-table thead {
     border-bottom: 1px solid #e6ecf5
 }
@@ -9496,6 +9493,10 @@ ol ol li {
 
 .event-item-table .author-date .author-name {
     color: #515365
+}
+
+.event-item-table .add-event {
+    text-align: center;
 }
 
 .event-item-table-fixed-width .author-date,

@@ -2,11 +2,10 @@
 
 namespace App\Mail;
 
-use App\Model\Job;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class JobApplication extends Mailable
 {
@@ -18,13 +17,22 @@ class JobApplication extends Mailable
     public $jobApplication;
 
     /**
+     * @var User
+     */
+    public $user;
+
+    private $resume;
+
+    /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(JobApplication $jobApplication)
+    public function __construct(\App\Model\JobApplication $jobApplication, User $user, $resume)
     {
         $this->jobApplication = $jobApplication;
+        $this->user = $user;
+        $this->resume = $resume;
     }
 
     /**
@@ -34,6 +42,16 @@ class JobApplication extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.application');
+        if ($this->resume) {
+            return $this->view('emails.application')
+                ->subject('Job Application')
+                ->attach($this->resume->getRealPath(),[
+                    'as' => $this->resume->getClientOriginalName(),
+                    'mime' => $this->resume->getClientMimeType()
+                ]);
+        }
+
+        return $this->view('emails.application')
+            ->subject('Job Application');
     }
 }

@@ -16,13 +16,13 @@
 
                 </li>
                 <li>
-                    <a href="03-Newsfeed.html">
-                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="NEWSFEED"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
+                    <a href={{ route('search.job') }}>
+                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="JOB SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
                     </a>
                 </li>
                 <li>
-                    <a href="16-FavPagesFeed.html">
-                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
+                    <a href="{{ route('job_application.show') }}">
+                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="JOB APPLICATIONS"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
                     </a>
                 </li>
                 <li>
@@ -70,7 +70,7 @@
     </div>
 
     <div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
-        <a href="02-ProfilePage.html" class="logo">
+        <a href="{{ route('home') }}" class="logo">
             <div class="img-wrap">
                 <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Olympus" width="120">
             </div>
@@ -88,15 +88,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="03-Newsfeed.html">
-                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
-                        <span class="left-menu-title">Newsfeed</span>
+                    <a href={{ route('search.job') }}>
+                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="JOB SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
+                        <span class="left-menu-title">Job Search</span>
                     </a>
                 </li>
                 <li>
-                    <a href="16-FavPagesFeed.html">
-                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
-                        <span class="left-menu-title">Fav Pages Feed</span>
+                    <a href="{{ route('job_application.show') }}">
+                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="JOB APPLICATION"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
+                        <span class="left-menu-title">Job Application</span>
                     </a>
                 </li>
                 <li>
@@ -148,22 +148,6 @@
                     </a>
                 </li>
             </ul>
-
-            <div class="profile-completion">
-
-                <div class="skills-item">
-                    <div class="skills-item-info">
-                        <span class="skills-item-title">Profile Completion</span>
-                        <span class="skills-item-count"><span class="count-animate" data-speed="1000" data-refresh-interval="50" data-to="76" data-from="0"></span><span class="units">76%</span></span>
-                    </div>
-                    <div class="skills-item-meter">
-                        <span class="skills-item-meter-active bg-primary" style="width: 76%"></span>
-                    </div>
-                </div>
-
-                <span>Complete <a href="#">your profile</a> so people can know more about you!</span>
-
-            </div>
         </div>
     </div>
 </div>

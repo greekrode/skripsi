@@ -13,7 +13,7 @@
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
                     <div class="main-header-content">
                         <h1>Search Your Job Here!</h1>
-                        <p>Here, you can check for your job. </p>
+                        <p>Here, you can search for job vacancy </p>
                     </div>
                 </div>
             </div>
@@ -144,13 +144,13 @@
                                 <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="control-label">Your Resume / CV</label>
-                                        <input class="form-control" type="file" id="resume" name="resume">
+                                        <input class="form-control" type="file" id="resume" name="resume" value="">
                                     </div>
                                 </div>
                                 <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group label-floating is-empty">
                                         <label class="control-label">Why we should hire you</label>
-                                        <textarea class="form-control" placeholder=""></textarea>
+                                        <textarea class="form-control" placeholder="" id="description" name="description"></textarea>
                                     </div>
                                     <button class="btn btn-primary btn-lg full-width" type="submit">Submit Application</button>
                                 </div>
@@ -189,6 +189,7 @@
 
         function apply(id)
         {
+            $('#description').empty();
             $.ajax({
                 url: '{{ route('job.show') }}',
                 method: 'get',
@@ -204,7 +205,6 @@
                         $("#description-job").html(response[0].description);
                     });
                     $('#edit-my-poll-popup').modal();
-                    console.log(response)
                 }
             })
         }

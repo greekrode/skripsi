@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Award;
 use App\Model\Country;
 use App\Model\Faculty;
 use App\Model\Major;
@@ -44,9 +45,11 @@ class HomeController extends Controller
         $user = Auth::user();
         if ($user->type === 'user') {
             $country = Country::where('code', $user->country)->first();
+            $award = Award::where('user_id', Auth::user()->id)->where('verified', 1)->get();
             $data = [
                 'user' => $user,
-                'country' => $country
+                'country' => $country,
+                'point' => count($award)
             ];
 
             return view('pages.home')->with($data);
@@ -101,10 +104,8 @@ class HomeController extends Controller
         $user->phone_number = $request->phone_number;
         $user->birthday = $request->datetimepicker;
         $user->birthplace = $request->birthplace;
-        $user->faculty_id = $request->faculty;
         $user->country = $request->country;
         $user->city = $request->city;
-        $user->major_id = $request->major;
         $user->about = $request->about;
         $user->occupation = $request->occupation;
         $user->gender = $request->gender;
@@ -118,6 +119,10 @@ class HomeController extends Controller
             $user->address = $request->address;
             $user->zip_code = $request->zip_code;
             $user->size = $request->size;
+        } else if ($user->type === 'user') {
+            $user->faculty_id = $request->faculty;
+            $user->major_id = $request->major;
+            $user->gpa = $request->gpa;
         }
 
         if ($user->save()) {
