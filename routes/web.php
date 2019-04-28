@@ -57,6 +57,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/award/update', 'AwardController@update')->name('award.update');
     Route::delete('/award/{id}', 'AwardController@destroy')->name('award.destroy');
 
+    Route::post('/certificate', 'CertificateController@store')->name('certificate.store');
+    Route::get('/certificate', 'CertificateController@show')->name('certificate.show');
+    Route::post('/certificate/update', 'CertificateController@update')->name('certificate.update');
+    Route::delete('/certificate/{id}', 'CertificateController@destroy')->name('certificate.destroy');
+
     Route::get('/job', 'JobController@show')->name('job.show');
     Route::get('/job/create', 'JobController@create')->name('job.create');
     Route::post('/job', 'JobController@store')->name('job.store');

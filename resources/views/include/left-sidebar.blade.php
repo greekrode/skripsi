@@ -93,12 +93,21 @@
                         <span class="left-menu-title">Job Search</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('job_application.show') }}">
-                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="JOB APPLICATION"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
-                        <span class="left-menu-title">Job Application</span>
-                    </a>
-                </li>
+                @if(Auth::user()->type === 'user')
+                    <li>
+                        <a href="{{ route('job_application.show') }}">
+                            <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="JOB APPLICATION"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
+                            <span class="left-menu-title">Job Application</span>
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('job_application.show') }}">
+                            <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="JOB APPLICATION"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
+                            <span class="left-menu-title">Statistics</span>
+                        </a>
+                    </li>
+                @endif
                 <li>
                     <a href="17-FriendGroups.html">
                         <svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-happy-faces-icon"></use></svg>

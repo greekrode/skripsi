@@ -285,6 +285,72 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="ui-block">
+                    <div class="ui-block-title">
+                        <h4 class="title">Student Certificates</h4>
+                        <a href="#" class="more" data-toggle="modal" data-target="#create-certificate"><svg class="olymp-plus-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-plus-icon"></use></svg></a>
+
+                    </div>
+                    <div class="ui-block-content">
+                        <div class="row">
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+
+
+                                <!-- W-Personal-Info -->
+
+                                <ul class="widget w-personal-info item-block">
+                                    @foreach ($user->certificates as $certificate)
+                                        @if ($loop->first)
+                                            <li>
+                                                <span class="title-edu">{{ $certificate->name }}</span>
+                                                <span class="edit-edu">
+                                                    <a id="edit-cert" href="#" onclick="editCert({{ $certificate->id }});">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('certificate.destroy', $certificate->id)}}"
+                                                       onclick="event.preventDefault();
+                                                        document.getElementById('delete-cert-form').submit();">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                    <form id="delete-cert-form" action="{{ route('certificate.destroy', $certificate->id)}}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </span>
+                                                <span class="date">{{ $certificate->date }}</span>
+                                                <span class="text">{{ $certificate->notes }}</span>
+                                            </li>
+                                        @else
+                                            <li class="edu-hover">
+                                                <span class="title-edu">{{ $certificate->name }}</span>
+                                                <span class="edit-edu">
+                                                    <a id="edit-cert" href="#" onclick="editCert({{ $certificate->id }});">
+                                                        <i class="fa fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="{{ route('certificate.destroy', $certificate->id)}}"
+                                                       onclick="event.preventDefault();
+                                                        document.getElementById('delete-cert-form').submit();">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                    <form id="delete-cert-form" action="{{ route('certificate.destroy', $certificate->id)}}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </span>
+                                                <span class="date">{{ $certificate->date }}</span>
+                                                <span class="text">{{ $certificate->notes }}</span>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+
+                                <!-- ... end W-Personal-Info -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="col col-xl-5 order-xl-1 col-lg-4 order-lg-1 col-md-12 order-md-2 col-sm-12 col-12">
@@ -335,6 +401,10 @@
                             <li>
                                 <span class="title">Major:</span>
                                 <span class="text">{{ $user->major ? $user->major->name : ''}}</span>
+                            </li>
+                            <li>
+                                <span class="title">GPA:</span>
+                                <span class="text">{{ $user->gpa ?? ''}}</span>
                             </li>
                             <li>
                                 <span class="title">Email:</span>
@@ -748,6 +818,69 @@
 
     <!-- ... end Window-popup Create Award -->
 
+    <!-- Window-popup Create Certificate -->
+
+    <div class="modal fade" id="create-certificate" tabindex="-1" role="dialog" aria-labelledby="create-certificate" aria-hidden="true">
+        <div class="modal-dialog window-popup create-event" role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
+                </a>
+                <div class="modal-header">
+                    <h6 class="title">Add Student Certificate</h6>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('certificate.store') }}" >
+                        @csrf
+                        <div class="form-group is-empty">
+                            <label class="control-label">Event Name</label>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="" required autofocus>
+
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group label-floating date-time-picker">
+                                    <label class="control-label">Event Date</label>
+                                    <input name="date" value="" required class="datetimepicker">
+                                    <span class="input-group-addon">
+                                        <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="control-label">Extra Notes</label>
+                            <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="" name="description"></textarea>
+                        </div>
+
+                        <div class="form-group  is-empty">
+                            <label class="control-label">Image Link (OneDrive)</label>
+                            <input id="link" type="text" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link" value="">
+
+                            @if ($errors->has('link'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('link') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <button class="btn btn-breez btn-lg full-width" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Window-popup Create Certificate -->
+
     <!-- ...  Window-popup Edit Education -->
 
     <div class="modal fade" id="edit-education" tabindex="-1" role="dialog" aria-labelledby="edit-education" aria-hidden="true">
@@ -1070,12 +1203,75 @@
 
     <!-- ... end Window-popup Edit Award -->
 
+    <!-- ...  Window-popup Edit Student Certificate -->
+
+    <div class="modal fade" id="edit-certificate" tabindex="-1" role="dialog" aria-labelledby="edit-certificate" aria-hidden="true">
+        <div class="modal-dialog window-popup create-event" role="document">
+            <div class="modal-content">
+                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+                    <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
+                </a>
+                <div class="modal-header">
+                    <h6 class="title">Edit Student Certificate</h6>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('certificate.update') }}">
+                        @csrf
+                        <input type="hidden" id="cert-id" name="cert_id">
+                        <div class="form-group">
+                            <label class="control-label">Event Name</label>
+                            <input id="cert-name-edit" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="" required autofocus>
+
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="form-group label-floating date-time-picker">
+                                    <label class="control-label">Event Date</label>
+                                    <input name="date" value="" required class="datetimepicker" id="date-edit">
+                                    <span class="input-group-addon">
+                                        <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label class="control-label">Notes</label>
+                            <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" placeholder="" name="description" id="description-edit-cert"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Link</label>
+                            <input id="cert-link-edit" type="text" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link" value="">
+
+                            @if ($errors->has('link'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('link') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <button class="btn btn-breez btn-lg full-width" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... end Window-popup Edit Student Certificate -->
+
+
 
     <a class="back-to-top" href="#">
         <img src="{{ asset('svg/back-to-top.svg') }}" alt="arrow" class="back-icon">
     </a>
-
-
 
     <script>
         function editEdu(id)
@@ -1159,6 +1355,29 @@
                         $('#link-edit').val(response.link);
                     });
                     $('#edit-award').modal();
+                    console.log(response);
+                }
+            });
+        }
+
+        function editCert(id)
+        {
+            $.ajax({
+                url: '{{ route('certificate.show') }}',
+                method: 'get',
+                data: {
+                    certId: id
+                },
+                success: function(response)
+                {
+                    $('#edit-certificate').bind('show.bs.modal', function() {
+                        $('#cert-id').val(response.id);
+                        $('#cert-name-edit').val(response.name);
+                        $('#date-edit').val(response.date);
+                        $('#description-edit-cert').val(response.notes);
+                        $('#cert-link-edit').val(response.link);
+                    });
+                    $('#edit-certificate').modal();
                     console.log(response);
                 }
             });
