@@ -14,6 +14,11 @@ class JobApplicationController extends Controller
 {
     public function index(Request $request)
     {
+        if (Auth::user()->type === 'company') {
+            $jobs = Job::where('user_id', Auth::user()->id)->get();
+            return view('pages.company.application')->with('jobs', $jobs);
+        }
+
         $jobApplicationsAccepted = JobApplication::where('user_id', Auth::user()->id)->where('accepted','1')->get();
         $jobApplicationsRejected = JobApplication::where('user_id', Auth::user()->id)->where('rejected','1')->get();
         $jobApplicationsPending = JobApplication::where('user_id', Auth::user()->id)->where('rejected','0')->where('accepted','0')->get();
@@ -23,6 +28,7 @@ class JobApplicationController extends Controller
             'jobApplicationsRejected' => $jobApplicationsRejected,
             'jobApplicationsPending' => $jobApplicationsPending
         ];
+
         return view('pages.account.application')->with($data);
     }
 

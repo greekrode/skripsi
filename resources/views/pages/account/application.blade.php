@@ -33,45 +33,51 @@
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">Pending</h6>
                     </div>
-                    <table class="event-item-table">
-                        <tbody>
-                        @foreach($jobApplicationsPending as $job)
-                            <tr class="event-item">
+                    @if(count($jobApplicationsAccepted) > 0)
+                        <table class="event-item-table">
+                            <tbody>
+                            @foreach($jobApplicationsPending as $job)
+                                <tr class="event-item">
 
-                                <td class="upcoming">
-                                    <div class="date-event">
+                                    <td class="upcoming">
+                                        <div class="date-event">
 
-                                        <svg class="olymp-small-calendar-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-small-calendar-icon"></use></svg>
+                                            <svg class="olymp-small-calendar-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-small-calendar-icon"></use></svg>
 
-                                        <span class="day">{{ date_format($job->created_at, 'd') }}</span>
-                                        <span class="month">{{ date_format($job->created_at, 'M') }}</span>
-                                    </div>
-                                </td>
-                                <td class="author">
-                                    <div class="event-author inline-items">
-                                        <div class="author-date">
-                                            <a href="{{ route('user.view', $job->job->user->id) }}" class="author-name h6">{{ $job->job->user->first_name }}</a>
+                                            <span class="day">{{ date_format($job->created_at, 'd') }}</span>
+                                            <span class="month">{{ date_format($job->created_at, 'M') }}</span>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="location">
-                                    <div class="place inline-items">
-                                        <span>{{ $job->title }}</span>
-                                    </div>
-                                </td>
-                                <td class="description">
-                                    <p class="description">{{ $job->job->type->name }}</p>
-                                </td>
-                                <td class="description">
-                                    <p class="description">{{ $job->job->seniority->name }}</p>
-                                </td>
-                                <td class="description">
-                                    <p class="description">{{ $job->job->title }}</p>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                                    </td>
+                                    <td class="author">
+                                        <div class="event-author inline-items">
+                                            <div class="author-date">
+                                                <a href="{{ route('user.view', $job->job->user->id) }}" class="author-name h6">{{ $job->job->user->first_name }}</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="location">
+                                        <div class="place inline-items">
+                                            <span>{{ $job->title }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="description">
+                                        <p class="description">{{ $job->job->type->name }}</p>
+                                    </td>
+                                    <td class="description">
+                                        <p class="description">{{ $job->job->seniority->name }}</p>
+                                    </td>
+                                    <td class="description">
+                                        <p class="description">{{ $job->job->title }}</p>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <div class="no-past-events">
+                            <span>No job application</span>
+                        </div>
+                    @endif
 
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">Accepted</h6>

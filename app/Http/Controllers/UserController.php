@@ -21,7 +21,7 @@ class UserController extends Controller
 
         if ($user->type === 'user') {
             $country = Country::where('code', $user->country)->first();
-            $award = Award::where('user_id', Auth::user()->id)->where('verified', 1)->get();
+            $award = Award::where('user_id', $id)->where('verified', 1)->get();
             $data = [
                 'user' => $user,
                 'country' => $country,
