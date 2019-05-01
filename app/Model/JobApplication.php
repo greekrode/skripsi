@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class JobApplication extends Model
 {
     protected $fillable = [
-        'filename', 'description', 'accepted', 'rejected'
+        'filename', 'description', 'accepted', 'rejected', 'message'
     ];
 
     /**

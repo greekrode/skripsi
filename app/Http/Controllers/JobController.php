@@ -91,7 +91,7 @@ class JobController extends Controller
     {
         $jobId = $request->get('jobId');
 
-        $job = Job::find($jobId)->first();
+        $job = Job::find($jobId);
         $type = $job->type;
         $seniority = $job->seniority;
 

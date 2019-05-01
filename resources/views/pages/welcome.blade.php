@@ -250,35 +250,16 @@
     <div class="container">
         <div class="row">
             <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                <img src="img/image2.png" alt="screen">
-            </div>
-
-            <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
-                <div class="crumina-module crumina-heading">
-                    <h2 class="heading-title">The Best UI/UX and <span class="c-primary">Awesome Features</span></h2>
-                    <p class="heading-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="medium-padding120">
-    <div class="container">
-        <div class="row">
-            <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
-                <div class="crumina-module crumina-heading">
-                    <h2 class="heading-title">Find People with <span class="c-primary">Your Same Interests</span></h2>
-                    <p class="heading-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <img src="img/image3.png" alt="screen">
+            </div>
+
+            <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
+                <div class="crumina-module crumina-heading">
+                    <h2 class="heading-title">Search for <span class="c-primary"> Job Now</span></h2>
+                    <p class="heading-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -293,8 +274,8 @@
         <div class="row mb60">
             <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
                 <div class="crumina-module crumina-heading align-center">
-                    <div class="heading-sup-title">SOCIAL NETWORK</div>
-                    <h2 class="h1 heading-title">Community Reviews</h2>
+                    <div class="heading-sup-title">Featured Users</div>
+                    <h2 class="h1 heading-title">Most Awarded Users</h2>
                     <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
                 </div>
             </div>
@@ -352,107 +333,6 @@
 
                         <!-- ... end Testimonial Item -->
                     </div>
-
-                    <div class="ui-block swiper-slide">
-
-
-                        <!-- Testimonial Item -->
-
-                        <div class="crumina-module crumina-testimonial-item">
-                            <div class="testimonial-header-thumb"></div>
-
-                            <div class="testimonial-item-content">
-
-                                <div class="author-thumb">
-                                    <img src="img/avatar17.jpg" alt="author">
-                                </div>
-
-                                <h3 class="testimonial-title">This is the Best Social Network ever!</h3>
-
-                                <ul class="rait-stars">
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-                                </ul>
-
-                                <p class="testimonial-message">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    nulla pariatur laborum.
-                                </p>
-
-                                <div class="author-content">
-                                    <a href="#" class="h6 author-name">Marina Valentine</a>
-                                    <div class="country">Long Island, NY</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ... end Testimonial Item -->
-
-                    </div>
-
-                    <div class="ui-block swiper-slide">
-
-
-                        <!-- Testimonial Item -->
-
-                        <div class="crumina-module crumina-testimonial-item">
-                            <div class="testimonial-header-thumb"></div>
-
-                            <div class="testimonial-item-content">
-
-                                <div class="author-thumb">
-                                    <img src="img/avatar1.jpg" alt="author">
-                                </div>
-
-                                <h3 class="testimonial-title">Incredible Design!</h3>
-
-                                <ul class="rait-stars">
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star star-icon"></i>
-                                    </li>
-                                    <li>
-                                        <i class="far fa-star star-icon"></i>
-                                    </li>
-                                </ul>
-
-                                <p class="testimonial-message">Sed ut perspiciatis unde omnis iste natus error sit
-                                    voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
-                                    illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                </p>
-
-                                <div class="author-content">
-                                    <a href="#" class="h6 author-name">Nicholas Grissom</a>
-                                    <div class="country">San Francisco, CA</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ... end Testimonial Item -->
-                    </div>
-                </div>
 
                 <div class="swiper-pagination"></div>
             </div>

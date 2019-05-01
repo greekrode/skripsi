@@ -136,6 +136,9 @@
                                             <li class="edu-hover">
                                                 <span class="title-edu">{{ $job->title }}</span>
                                                 <span class="edit-edu">
+                                                    <a href="#" onclick="showJob({{ $job->id }})">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
                                                     <a id="edit-edu" href="{{ route('job.edit', $job->id) }}">
                                                         <i class="fa fa-pencil-alt"></i>
                                                     </a>

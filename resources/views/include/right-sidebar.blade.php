@@ -82,10 +82,6 @@
             </a>
         </div>
 
-        <a href="#" class="olympus-chat inline-items js-chat-open">
-            <svg class="olymp-chat---messages-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-chat---messages-icon"></use></svg>
-        </a>
-
     </div>
 
     <div class="fixed-sidebar-right sidebar--large" id="sidebar-right-1">
@@ -93,7 +89,7 @@
         <div class="mCustomScrollbar" data-mcs-theme="dark">
 
             <div class="ui-block-title ui-block-title-small">
-                <a href="#" class="title">Close Friends</a>
+                <a href="#" class="title">Featured Users</a>
                 <a href="#">Settings</a>
             </div>
 
@@ -266,7 +262,7 @@
 
 
             <div class="ui-block-title ui-block-title-small">
-                <a href="#" class="title">MY FAMILY</a>
+                <a href="#" class="title">Latest Job Posting</a>
                 <a href="#">Settings</a>
             </div>
 
@@ -480,12 +476,6 @@
                 <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
             </a>
         </div>
-
-        <a href="#" class="olympus-chat inline-items js-chat-open">
-
-            <h6 class="olympus-chat-title">OLYMPUS CHAT</h6>
-            <svg class="olymp-chat---messages-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-chat---messages-icon"></use></svg>
-        </a>
 
     </div>
 </div>

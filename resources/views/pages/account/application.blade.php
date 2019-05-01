@@ -33,7 +33,7 @@
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">Pending</h6>
                     </div>
-                    @if(count($jobApplicationsAccepted) > 0)
+                    @if(count($jobApplicationsPending) > 0)
                         <table class="event-item-table">
                             <tbody>
                             @foreach($jobApplicationsPending as $job)
@@ -78,11 +78,12 @@
                             <span>No job application</span>
                         </div>
                     @endif
+                </div>
 
+                <div class="ui-block">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">Accepted</h6>
                     </div>
-
                     @if(count($jobApplicationsAccepted) > 0)
                         <table class="event-item-table">
                             <tbody>
@@ -124,11 +125,13 @@
                             </tbody>
                         </table>
                     @else
-                    <div class="no-past-events">
-                        <span>No job application</span>
-                    </div>
+                        <div class="no-past-events">
+                            <span>No job application</span>
+                        </div>
                     @endif
+                </div>
 
+                <div class="ui-block">
                     <div class="ui-block-title ui-block-title-small">
                         <h6 class="title">Rejected</h6>
                     </div>
@@ -136,7 +139,7 @@
                     @if(count($jobApplicationsRejected) > 0)
                         <table class="event-item-table">
                             <tbody>
-                            @foreach($jobApplicationsRejected as $job)
+                            @foreach($jobApplicationsAccepted as $job)
                                 <tr class="event-item">
 
                                     <td class="upcoming">
@@ -187,7 +190,7 @@
 
 
     <a class="back-to-top" href="#">
-        <img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
+        <img src="{{ asset('svg/back-to-top.svg') }}" alt="arrow" class="back-icon">
     </a>
 
 

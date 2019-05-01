@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Model\Country;
 use App\Model\EmploymentType;
 use App\Model\Job;
+use App\Model\JobApplication;
 use App\Model\Seniority;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -65,7 +67,33 @@ class SearchController extends Controller
                 foreach ($jobs as $job)
                 {
                     $date = date('M d, Y', strtotime($job->created_at));
-                    $response .= '
+                    if (JobApplication::where('user_id', Auth::user()->id)->where('job_id', $job->id)->first()) {
+                        $response .= '
+                    <tr>
+                        <td class="forum">
+                            '.$date.'
+                        </td>
+                        <td class="topics">
+                            '.$job->first_name.' '.$job->last_name.'
+                        </td>
+                        <td class="posts">
+                            '.$job->title.'
+                        </td>
+                        <td>
+                            '.$job->etName.'
+                        </td>
+                        <td>
+                            '.$job->sName.'     
+                        </td>
+                        <td>
+                            '.$job->city.', '.$job->cName.'
+                        </td>
+                        <td>
+                            <span><a id="apply" href="#" class="btn btn-grey full-width" style="pointer-events: none">Applied!</a></span>
+                        </td>
+                    </tr>';
+                    } else {
+                        $response .= '
                     <tr>
                         <td class="forum">
                             '.$date.'
@@ -89,6 +117,7 @@ class SearchController extends Controller
                             <span><a id="apply" href="#" onclick="apply('.$job->id.')" class="btn btn-primary btn-sm full-width">Apply Now!</a></span>
                         </td>
                     </tr>';
+                    }
                 }
             } else {
                 $response = '

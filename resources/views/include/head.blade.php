@@ -30,5 +30,6 @@
 
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
 
 

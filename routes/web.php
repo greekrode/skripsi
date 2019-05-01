@@ -74,6 +74,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('/job_application', 'JobApplicationController@index')->name('job_application.show');
     Route::post('/job_application', 'JobApplicationController@create')->name('job_application.create');
+    Route::post('/job_application/accept', 'JobApplicationController@accept')->name('job_application.accept');
+    Route::post('/job_application/reject', 'JobApplicationController@reject')->name('job_application.reject');
 
     Route::get('user/{id}','UserController@view')->name('user.view');
 });

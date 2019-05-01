@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\JobApplication;
+use \App\Mail\JobApplication as JobMail;
 use App\Model\Job;
 use App\User;
 use Illuminate\Http\Request;
@@ -47,14 +48,15 @@ class JobApplicationController extends Controller
             if ($check) {
                 $filename = $file->store('resume');
 
-                $jobApplication = new \App\Model\JobApplication();
+                $jobApplication = new JobApplication();
                 $jobApplication->description = $description;
                 $jobApplication->user_id = Auth::user()->id;
                 $jobApplication->job_id = $request->job_id;
                 $jobApplication->filename = $filename;
-                $jobApplication->save();
 
-                Mail::to($job->user->email)->send(new JobApplication($jobApplication, $user, $file));
+                Mail::to($job->user->email)->send(new JobMail($jobApplication, $user, $file));
+
+                $jobApplication->save();
 
                 Toastr::success('Successfully applied for a job', 'Success');
                 return redirect()->route('search.job');
@@ -64,17 +66,48 @@ class JobApplicationController extends Controller
             return redirect()->route('search.job');
         }
 
-        $jobApplication = new \App\Model\JobApplication();
+        $jobApplication = new JobApplication();
         $jobApplication->description = $description;
         $jobApplication->user_id = Auth::user()->id;
         $jobApplication->job_id = $request->job_id;
+
+        Mail::to($job->user->email)->send(new JobMail($jobApplication, $user, null));
+
         $jobApplication->save();
-
-
-        Mail::to($job->user->email)->send(new JobApplication($jobApplication, $user, null));
-
 
         Toastr::success('Successfully applied for a job', 'Success');
         return redirect()->route('search.job');
+    }
+
+    public function accept(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+
+        $jobApplication =  JobApplication::find($request->accept_job_id);
+        $jobApplication->message = $request->accept_message;
+        $jobApplication->accepted = 1;
+
+        Mail::to($jobApplication->user->email)->send(new JobMail($jobApplication, $user, null));
+
+        $jobApplication->save();
+
+        Toastr::success('Successfully sent a acceptance letter', 'Success');
+        return redirect()->route('job_application.show');
+    }
+
+    public function reject(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+
+        $jobApplication =  JobApplication::find($request->reject_job_id);
+        $jobApplication->message = $request->reject_message;
+        $jobApplication->rejected = 1;
+
+        Mail::to($jobApplication->user->email)->send(new JobMail($jobApplication, $user, null));
+
+        $jobApplication->save();
+
+        Toastr::success('Successfully sent a rejection letter', 'Success');
+        return redirect()->route('job_application.show');
     }
 }

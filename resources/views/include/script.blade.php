@@ -1,4 +1,3 @@
-<script src="{{ asset('js/jquery-3.2.1.js') }}"></script>
 <script src="{{ asset('js/jquery.appear.js') }}"></script>
 <script src="{{ asset('js/jquery.mousewheel.js') }}"></script>
 <script src="{{ asset('js/perfect-scrollbar.js') }}"></script>

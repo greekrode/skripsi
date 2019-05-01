@@ -30,9 +30,10 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#search" role="tab">
-                    <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
-                    <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-close-icon"></use></svg>
+                <a class="nav-link" href="{{ route('search.job') }}" style="fill: #ffffff;" role="tab">
+                    <div class="control-icon has-items">
+                        <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
+                    </div>
                 </a>
             </li>
         </ul>
@@ -351,19 +352,6 @@
             </div>
 
         </div>
-
-        <div class="tab-pane " id="search" role="tabpanel">
-
-
-            <form class="search-bar w-search notification-list friend-requests">
-                <div class="form-group with-button">
-                    <input class="form-control js-user-search" placeholder="Search here people or pages..." type="text">
-                </div>
-            </form>
-
-
-        </div>
-
     </div>
     <!-- ... end  Tab panes -->
 

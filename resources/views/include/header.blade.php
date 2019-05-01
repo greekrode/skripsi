@@ -5,22 +5,23 @@
     </div>
 
     <div class="header-content-wrapper">
-        {{--<form class="search-bar w-search notification-list friend-requests">--}}
-            {{--<div class="form-group with-button">--}}
-                {{--<input class="form-control" placeholder="Search here people or pages..." type="text" id="user-search">--}}
-                {{--<button>--}}
-                    {{--<svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>--}}
-                {{--</button>--}}
-            {{--</div>--}}
-        {{--</form>--}}
+        <div class="search-bar w-search notification-list friend-requests" style="visibility: hidden;">
+            <div class="form-group with-button">
+                <input class="form-control" placeholder="Search here people or pages..." type="text" id="user-search">
+                <button>
+                    <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
+                </button>
+            </div>
+        </div>
 
 
         <div class="control-block">
 
             <div class="control-icon more has-items">
-                <a href="{{ route('search.job') }}" style="text-decoration: none; color: white;">
+                <a href="{{ route('search.job') }}" style="fill: #ffffff;">
                     <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
                 </a>
+
             </div>
 
             <div class="control-icon more has-items">
@@ -144,96 +145,6 @@
                 </div>
             </div>
 
-            {{--<div class="control-icon more has-items">--}}
-                {{--<svg class="olymp-chat---messages-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-chat---messages-icon"></use></svg>--}}
-                {{--<div class="label-avatar bg-purple">2</div>--}}
-
-                {{--<div class="more-dropdown more-with-triangle triangle-top-center">--}}
-                    {{--<div class="ui-block-title ui-block-title-small">--}}
-                        {{--<h6 class="title">Chat / Messages</h6>--}}
-                        {{--<a href="#">Mark all as read</a>--}}
-                        {{--<a href="#">Settings</a>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="mCustomScrollbar" data-mcs-theme="dark">--}}
-                        {{--<ul class="notification-list chat-message">--}}
-                            {{--<li class="message-unread">--}}
-                                {{--<div class="author-thumb">--}}
-                                    {{--<img src="img/avatar59-sm.jpg" alt="author">--}}
-                                {{--</div>--}}
-                                {{--<div class="notification-event">--}}
-                                    {{--<a href="#" class="h6 notification-friend">Diana Jameson</a>--}}
-                                    {{--<span class="chat-message-item">Hi James! It’s Diana, I just wanted to let you know that we have to reschedule...</span>--}}
-                                    {{--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>--}}
-                                {{--</div>--}}
-                                {{--<span class="notification-icon">--}}
-									{{--<svg class="olymp-chat---messages-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-chat---messages-icon"></use></svg>--}}
-								{{--</span>--}}
-                                {{--<div class="more">--}}
-                                    {{--<svg class="olymp-three-dots-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-three-dots-icon"></use></svg>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-
-                            {{--<li>--}}
-                                {{--<div class="author-thumb">--}}
-                                    {{--<img src="img/avatar60-sm.jpg" alt="author">--}}
-                                {{--</div>--}}
-                                {{--<div class="notification-event">--}}
-                                    {{--<a href="#" class="h6 notification-friend">Jake Parker</a>--}}
-                                    {{--<span class="chat-message-item">Great, I’ll see you tomorrow!.</span>--}}
-                                    {{--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>--}}
-                                {{--</div>--}}
-                                {{--<span class="notification-icon">--}}
-									{{--<svg class="olymp-chat---messages-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-chat---messages-icon"></use></svg>--}}
-								{{--</span>--}}
-
-                                {{--<div class="more">--}}
-                                    {{--<svg class="olymp-three-dots-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-three-dots-icon"></use></svg>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<div class="author-thumb">--}}
-                                    {{--<img src="img/avatar61-sm.jpg" alt="author">--}}
-                                {{--</div>--}}
-                                {{--<div class="notification-event">--}}
-                                    {{--<a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>--}}
-                                    {{--<span class="chat-message-item">We’ll have to check that at the office and see if the client is on board with...</span>--}}
-                                    {{--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 9:56pm</time></span>--}}
-                                {{--</div>--}}
-                                {{--<span class="notification-icon">--}}
-										{{--<svg class="olymp-chat---messages-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-chat---messages-icon"></use></svg>--}}
-									{{--</span>--}}
-                                {{--<div class="more">--}}
-                                    {{--<svg class="olymp-three-dots-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-three-dots-icon"></use></svg>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-
-                            {{--<li class="chat-group">--}}
-                                {{--<div class="author-thumb">--}}
-                                    {{--<img src="img/avatar11-sm.jpg" alt="author">--}}
-                                    {{--<img src="img/avatar12-sm.jpg" alt="author">--}}
-                                    {{--<img src="img/avatar13-sm.jpg" alt="author">--}}
-                                    {{--<img src="img/avatar10-sm.jpg" alt="author">--}}
-                                {{--</div>--}}
-                                {{--<div class="notification-event">--}}
-                                    {{--<a href="#" class="h6 notification-friend">You, Faye, Ed &amp; Jet +3</a>--}}
-                                    {{--<span class="last-message-author">Ed:</span>--}}
-                                    {{--<span class="chat-message-item">Yeah! Seems fine by me!</span>--}}
-                                    {{--<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 16th at 10:23am</time></span>--}}
-                                {{--</div>--}}
-                                {{--<span class="notification-icon">--}}
-										{{--<svg class="olymp-chat---messages-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-chat---messages-icon"></use></svg>--}}
-									{{--</span>--}}
-                                {{--<div class="more">--}}
-                                    {{--<svg class="olymp-three-dots-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-three-dots-icon"></use></svg>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-
-                    {{--<a href="#" class="view-all bg-purple">View All Messages</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
 
             <div class="control-icon more has-items">
                 <svg class="olymp-thunder-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-thunder-icon"></use></svg>
@@ -352,7 +263,7 @@
 
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="img/author-page.jpg" class="avatar">
+                    <img src="{{ Auth::user()->profile_image ? '/uploads/'.Auth::user()->profile_image : 'https://via.placeholder.com/124.png?text=Profile' }}" alt="avatar" class="avatar" width="35">
                     <span class="icon-status online"></span>
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -367,13 +278,6 @@
                                         <svg class="olymp-menu-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-menu-icon"></use></svg>
 
                                         <span>Profile Settings</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="36-FavPage-SettingsAndCreatePopup.html">
-                                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
-
-                                        <span>Create Fav Page</span>
                                     </a>
                                 </li>
                                 <li>
@@ -393,52 +297,9 @@
                                 </li>
                             </ul>
 
-                            <div class="ui-block-title ui-block-title-small">
-                                <h6 class="title">Chat Settings</h6>
-                            </div>
-
-                            <ul class="chat-settings">
-                                <li>
-                                    <a href="#">
-                                        <span class="icon-status online"></span>
-                                        <span>Online</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="icon-status away"></span>
-                                        <span>Away</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="icon-status disconected"></span>
-                                        <span>Disconnected</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <span class="icon-status status-invisible"></span>
-                                        <span>Invisible</span>
-                                    </a>
-                                </li>
-                            </ul>
 
                             <div class="ui-block-title ui-block-title-small">
-                                <h6 class="title">Custom Status</h6>
-                            </div>
-
-                            <form class="form-group with-button custom-status">
-                                <input class="form-control" placeholder="" type="text" value="Space Cowboy">
-
-                                <button class="bg-purple">
-                                    <svg class="olymp-check-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-check-icon"></use></svg>
-                                </button>
-                            </form>
-
-                            <div class="ui-block-title ui-block-title-small">
-                                <h6 class="title">About Olympus</h6>
+                                <h6 class="title">About Us</h6>
                             </div>
 
                             <ul>
@@ -450,11 +311,6 @@
                                 <li>
                                     <a href="#">
                                         <span>FAQs</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span>Careers</span>
                                     </a>
                                 </li>
                                 <li>
@@ -471,7 +327,7 @@
                     <div class="author-title">
                         {{ Auth::user()->first_name.' '.Auth::user()->last_name }} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-dropdown-arrow-icon"></use></svg>
                     </div>
-                    <span class="author-subtitle">SPACE COWBOY</span>
+                    <span class="author-subtitle">{{ Auth::user()->city.', '.Auth::user()->country}}</span>
                 </a>
             </div>
 

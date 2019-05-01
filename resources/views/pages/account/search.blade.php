@@ -166,6 +166,10 @@
     <!-- ... end Search Widget -->
 
     <script>
+        $('document').ready(function () {
+            searchJob('');
+        });
+
         function searchJob(query) {
             $.ajax({
                 url: '{{ route('search.filter') }}',

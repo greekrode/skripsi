@@ -8,12 +8,9 @@
     </div>
 
     <div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
-        <a href="#" class="logo">
+        <a href="{{ route('home') }}" class="logo">
             <div class="img-wrap">
                 <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Olympus" width="120">
-            </div>
-            <div class="title-block">
-                <h6 class="logo-title">olympus</h6>
             </div>
         </a>
 
@@ -22,14 +19,14 @@
             <div class="control-block">
                 <div class="author-page author vcard inline-items">
                     <div class="author-thumb">
-                        <img alt="author" src="img/author-page.jpg" class="avatar">
+                        <img src="{{ Auth::user()->profile_image ? '/uploads/'.Auth::user()->profile_image : 'https://via.placeholder.com/124.png?text=Profile' }}" alt="avatar" class="avatar" width="35">
                         <span class="icon-status online"></span>
                     </div>
                     <a href="02-ProfilePage.html" class="author-name fn">
                         <div class="author-title">
-                            James Spiegel <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-dropdown-arrow-icon"></use></svg>
+                            {{ Auth::user()->first_name.' '.Auth::user()->last_name }}  <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-dropdown-arrow-icon"></use></svg>
                         </div>
-                        <span class="author-subtitle">SPACE COWBOY</span>
+                        <span class="author-subtitle">{{ Auth::user()->city.', '.Auth::user()->country}}</span>
                     </a>
                 </div>
             </div>
@@ -46,15 +43,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="mobile-index.html">
-                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="NEWSFEED"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
-                        <span class="left-menu-title">Newsfeed</span>
+                    <a href={{ route('search.job') }}>
+                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="JOB SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
+                        <span class="left-menu-title">Job Search</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Mobile-28-YourAccount-PersonalInformation.html">
-                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
-                        <span class="left-menu-title">Fav Pages Feed</span>
+                    <a href="{{ route('job_application.show') }}">
+                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="JOB APPLICATION"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
+                        <span class="left-menu-title">Job Application</span>
                     </a>
                 </li>
                 <li>
@@ -122,13 +119,6 @@
                 </li>
                 <li>
                     <a href="#">
-                        <svg class="olymp-star-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FAV PAGE"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-star-icon"></use></svg>
-
-                        <span>Create Fav Page</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
                         <svg class="olymp-logout-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-logout-icon"></use></svg>
 
                         <span href="{{ route('logout') }}"
@@ -145,7 +135,7 @@
             </ul>
 
             <div class="ui-block-title ui-block-title-small">
-                <h6 class="title">About Olympus</h6>
+                <h6 class="title">About Us</h6>
             </div>
 
             <ul class="about-olympus">
@@ -157,11 +147,6 @@
                 <li>
                     <a href="#">
                         <span>FAQs</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span>Careers</span>
                     </a>
                 </li>
                 <li>
