@@ -12,14 +12,14 @@
     <div class="header-spacer--standard"></div>
 
     <div class="stunning-header-content">
-        <h1 class="stunning-header-title">Careers</h1>
+        <h1 class="stunning-header-title">Jobs</h1>
         <ul class="breadcrumbs">
             <li class="breadcrumbs-item">
                 <a href="#">Home</a>
                 <span class="icon breadcrumbs-custom">/</span>
             </li>
             <li class="breadcrumbs-item active">
-                <span>Careers</span>
+                <span>Jobs</span>
             </li>
         </ul>
     </div>
@@ -35,10 +35,10 @@
         <div class="row mb60">
             <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12  m-auto">
                 <div class="crumina-module crumina-heading align-center">
-                    <div class="heading-sup-title">JOIN THE TEAM</div>
-                    <h2 class="heading-title">Open Positions</h2>
-                    <p class="heading-text">Don’t see a position that fits you? No problem! we wanna hear from you, send us an email to:
-                        <a href="mailto:careers@olympus.com">careers@olympus.com</a>
+                    <div class="heading-sup-title">SHAPE YOUR FUTURE</div>
+                    <h2 class="heading-title">Open Jobs</h2>
+                    <p class="heading-text">Any question to ask? Please email us at:
+                        <a href="mailto:admin@skripsi.com">admin@skripsi.com</a>
                     </p>
                 </div>
             </div>
@@ -51,50 +51,22 @@
                     <li class="head">
                         <span>DATE POSTED</span>
                         <span>POSITION</span>
+                        <span style="margin-left: -10px !important;">SENIORITY</span>
                         <span>TYPE</span>
                         <span>PLACE</span>
                         <span></span>
                     </li>
 
-                    <li>
-                        <span class="date">03/12/2017</span>
-                        <span class="position bold">UI/UX Designer</span>
-                        <span class="type bold">Full Time</span>
-                        <span class="town-place">San Francisco, CA</span>
-                        <span><a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#edit-my-poll-popup">Apply Now!</a></span>
-                    </li>
-
-                    <li>
-                        <span class="date">03/09/2017</span>
-                        <span class="position bold">Social Media Manager</span>
-                        <span class="type bold">Part Time</span>
-                        <span class="town-place">Austin, TX</span>
-                        <span><a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#edit-my-poll-popup">Apply Now!</a></span>
-                    </li>
-
-                    <li>
-                        <span class="date">02/27/2017</span>
-                        <span class="position bold">Senior Developer</span>
-                        <span class="type bold">Full Time</span>
-                        <span class="town-place">San Francisco, CA</span>
-                        <span><a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#edit-my-poll-popup">Apply Now!</a></span>
-                    </li>
-
-                    <li>
-                        <span class="date">02/24/2017</span>
-                        <span class="position bold">Content Reviewer</span>
-                        <span class="type bold">Remote</span>
-                        <span class="town-place">United States</span>
-                        <span><a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#edit-my-poll-popup">Apply Now!</a></span>
-                    </li>
-
-                    <li>
-                        <span class="date">02/24/2017</span>
-                        <span class="position bold">Customer Service Manager</span>
-                        <span class="type bold">Full Time</span>
-                        <span class="town-place">New York, NY</span>
-                        <span><a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#edit-my-poll-popup">Apply Now!</a></span>
-                    </li>
+                    @foreach ($jobs as $job)
+                        <li>
+                            <span class="date">{{ date_format($job->created_at,'M jS, Y') }}</span>
+                            <span class="position bold">{{ $job->title }}</span>
+                            <span class="type bold">{{ $job->seniority->name }}</span>
+                            <span class="type bold">{{ $job->type->name }}</span>
+                            <span class="town-place">{{ $job->city.', '. $job->country }}</span>
+                            <span><a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#edit-my-poll-popup">Apply Now!</a></span>
+                        </li>
+                    @endforeach
                 </ul>
 
             </div>
@@ -104,178 +76,13 @@
 
 <section class="medium-padding180 bg-section5 background-cover"></section>
 
-
-<section class="medium-padding120">
-    <div class="container">
-        <div class="row mb60">
-            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12  m-auto">
-                <div class="crumina-module crumina-heading align-center">
-                    <div class="heading-sup-title">WHY JOIN OUR TEAM</div>
-                    <h2 class="heading-title">Perks of the Olympians</h2>
-                    <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="info-box-wrap">
-            <div class="row">
-                <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-
-
-                    <!-- Info Box  -->
-
-                    <div class="crumina-module crumina-info-box crumina-info-box--thumb-left">
-                        <div class="info-box-image">
-                            <img src="img/info7.png" alt="icon">
-                        </div>
-                        <div class="info-box-content">
-                            <h3 class="info-box-title">Health Coverage</h3>
-                            <p class="info-box-text">Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la etere dolore magna aliqua.</p>
-                        </div>
-                    </div>
-
-                    <!-- ... end Info Box  -->
-
-                </div>
-
-                <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-
-
-                    <!-- Info Box  -->
-
-                    <div class="crumina-module crumina-info-box crumina-info-box--thumb-left">
-                        <div class="info-box-image">
-                            <img src="img/info8.png" alt="icon">
-                        </div>
-                        <div class="info-box-content">
-                            <h3 class="info-box-title">Unlimited Coffee</h3>
-                            <p class="info-box-text">Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la etere dolore magna aliqua.</p>
-                        </div>
-                    </div>
-
-                    <!-- ... end Info Box  -->
-
-                </div>
-                <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-
-
-                    <!-- Info Box  -->
-
-                    <div class="crumina-module crumina-info-box crumina-info-box--thumb-left">
-                        <div class="info-box-image">
-                            <img src="img/info9.png" alt="icon">
-                        </div>
-                        <div class="info-box-content">
-                            <h3 class="info-box-title">Paid Vacations</h3>
-                            <p class="info-box-text">Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la etere dolore magna aliqua.</p>
-                        </div>
-                    </div>
-
-                    <!-- ... end Info Box  -->
-
-                </div>
-                <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-
-
-                    <!-- Info Box  -->
-
-                    <div class="crumina-module crumina-info-box crumina-info-box--thumb-left">
-                        <div class="info-box-image">
-                            <img src="img/info10.png" alt="icon">
-                        </div>
-                        <div class="info-box-content">
-                            <h3 class="info-box-title">Free Snack Bar</h3>
-                            <p class="info-box-text">Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la etere dolore magna aliqua.</p>
-                        </div>
-                    </div>
-
-                    <!-- ... end Info Box  -->
-
-                </div>
-                <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-
-
-                    <!-- Info Box  -->
-
-                    <div class="crumina-module crumina-info-box crumina-info-box--thumb-left">
-                        <div class="info-box-image">
-                            <img src="img/info11.png" alt="icon">
-                        </div>
-                        <div class="info-box-content">
-                            <h3 class="info-box-title">Keep Learning</h3>
-                            <p class="info-box-text">Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la etere dolore magna aliqua.</p>
-                        </div>
-                    </div>
-
-                    <!-- ... end Info Box  -->
-
-                </div>
-                <div class="col col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-
-
-                    <!-- Info Box  -->
-
-                    <div class="crumina-module crumina-info-box crumina-info-box--thumb-left">
-                        <div class="info-box-image">
-                            <img src="img/info12.png" alt="icon">
-                        </div>
-                        <div class="info-box-content">
-                            <h3 class="info-box-title">Gaming Room</h3>
-                            <p class="info-box-text">Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la etere dolore magna aliqua.</p>
-                        </div>
-                    </div>
-
-                    <!-- ... end Info Box  -->
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="pb120">
-    <div class="container">
-        <div class="row">
-            <div class="col col-xl-8 col-lg-8 col-md-12 col-sm-12  m-auto">
-
-
-                <!-- Follow Instagram -->
-
-                <div class="follow-instagram">
-                    <img src="img/inst5.jpg" alt="photo">
-                    <img src="img/inst4.jpg" alt="photo">
-                    <img src="img/inst3.jpg" alt="photo">
-                    <img src="img/inst2.jpg" alt="photo">
-                    <img src="img/inst1.jpg" alt="photo">
-                    <div class="overlay overlay-dark"></div>
-                    <a href="#" class="btn btn-blue btn-lg with--icon">
-                        <img class="icon" src="img/inst-logo.png" alt="app store">
-                        <div class="text">
-                            <span class="sup-title">CHECK OUT OUR OFFICES</span>
-                            <span class="title">Follow our Instagram</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- ... end Follow Instagram -->
-
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
 <!-- Section Call To Action Animation -->
 
 <section class="align-right pt160 pb80 section-move-bg call-to-action-animation scrollme">
     <div class="container">
         <div class="row">
             <div class="col col-xl-10 m-auto col-lg-10 col-md-12 col-sm-12 col-12">
-                <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registration-login-form-popup">Start Making Friends Now!</a>
+                <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registration-login-form-popup">Register Now!</a>
             </div>
         </div>
     </div>

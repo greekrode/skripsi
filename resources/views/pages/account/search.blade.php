@@ -209,6 +209,7 @@
                         $("#description-job").html(response[0].description);
                     });
                     $('#edit-my-poll-popup').modal();
+                    console.log(response);
                 }
             })
         }

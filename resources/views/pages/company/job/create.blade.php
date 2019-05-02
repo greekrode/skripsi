@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label">Seniority Level</label>
                                         <select class="selectpicker form-control" name="seniority" data-live-search="true" required>
@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label">Employment Type</label>
                                         <select class="selectpicker form-control" name="type" data-live-search="true" required>
@@ -114,6 +114,16 @@
                                                 <strong>{{ $errors->first('type') }}</strong>
                                             </span>
                                         @endif
+                                    </div>
+                                </div>
+
+                                <div class="col col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group date-time-picker label-floating">
+                                        <label class="control-label">End Date</label>
+                                        <input name="datetimepicker" required class="datetimepicker">
+                                        <span class="input-group-addon">
+                                            <svg class="olymp-month-calendar-icon icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use></svg>
+                                        </span>
                                     </div>
                                 </div>
 

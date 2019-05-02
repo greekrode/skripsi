@@ -256,9 +256,10 @@
             <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
                 <div class="crumina-module crumina-heading">
                     <h2 class="heading-title">Search for <span class="c-primary"> Job Now</span></h2>
-                    <p class="heading-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa.
-                    </p>
+{{--                    <p class="heading-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.--}}
+{{--                        Excepteur sint occaecat cupidatat non proident, sunt in culpa.--}}
+{{--                    </p>--}}
+                    <a href="{{ route('job.search') }}" class="btn btn-primary btn-md">Search Now!</a>
                 </div>
             </div>
         </div>

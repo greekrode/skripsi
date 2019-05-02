@@ -40,25 +40,27 @@ class SearchController extends Controller
 
             if ($query !== null) {
                 $jobs = DB::table('jobs')
-                    ->select('jobs.id', 'jobs.title', 'jobs.created_at', 'jobs.city', 'users.first_name', 'users.last_name', 'employment_types.name as etName',
+                    ->select('jobs.id', 'jobs.title', 'jobs.created_at', 'jobs.end_date', 'jobs.city', 'users.first_name', 'users.last_name', 'employment_types.name as etName',
                         'seniorities.name as sName', 'countries.name as cName')
                     ->join('employment_types', 'jobs.type_id', '=', 'employment_types.id')
                     ->join('seniorities', 'jobs.seniority_id', '=', 'seniorities.id')
                     ->join('users', 'jobs.user_id', '=', 'users.id')
                     ->join('countries', 'jobs.country', '=', 'countries.code')
                     ->where('jobs.title', 'like', '%'.$query.'%')
+                    ->where('jobs.end_date', '>', new \DateTime() )
                     ->orWhere('employment_types.name', 'like', '%'.$query.'%')
                     ->orWhere('countries.name', 'like', '%'.$query.'%')
                     ->orWhere('seniorities.name', 'like', '%'.$query.'%')
                     ->get();
             } else {
                 $jobs = DB::table('jobs')
-                    ->select('jobs.id', 'jobs.title', 'jobs.created_at', 'jobs.city', 'users.first_name', 'users.last_name', 'employment_types.name as etName',
+                    ->select('jobs.id', 'jobs.title', 'jobs.created_at', 'jobs.end_date', 'jobs.city', 'users.first_name', 'users.last_name', 'employment_types.name as etName',
                         'seniorities.name as sName', 'countries.name as cName')
                     ->join('employment_types', 'jobs.type_id', '=', 'employment_types.id')
                     ->join('seniorities', 'jobs.seniority_id', '=', 'seniorities.id')
                     ->join('users', 'jobs.user_id', '=', 'users.id')
                     ->join('countries', 'jobs.country', '=', 'countries.code')
+                    ->where('jobs.end_date', '>', new \DateTime() )
                     ->get();
             }
 

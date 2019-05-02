@@ -36,6 +36,7 @@ class JobController extends Controller
         $job->description = $request->description;
         $job->industry = $request->industry;
         $job->type_id = $request->type;
+        $job->end_date = date('Y-m-d', strtotime($request->datetimepicker));
         $job->user_id = Auth::user()->id;
         $job->save();
 
@@ -69,6 +70,7 @@ class JobController extends Controller
         $job->description = $request->description;
         $job->industry = $request->industry;
         $job->type_id = $request->type;
+        $job->end_date = date('Y-m-d', strtotime(str_replace('/', '-', $request->datetimepicker)));
         $job->save();
 
         Toastr::success('Job has been successfully edited', 'Success');

@@ -21,26 +21,28 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
+Route::get('/user_search', 'HomeController@userSearch')->name('user.search');
+Route::get('/job_search', 'HomeController@jobSearch')->name('job.search');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'UserController@index')->name('home');
 
     /**
      * Edit account personal information
      */
-    Route::get('/account/personal/{id}', 'HomeController@editPersonal')->name('account.personal.edit');
-    Route::post('/account/personal/{id}', 'HomeController@updatePersonal')->name('account.personal.update');
+    Route::get('/account/personal/{id}', 'UserController@editPersonal')->name('account.personal.edit');
+    Route::post('/account/personal/{id}', 'UserController@updatePersonal')->name('account.personal.update');
 
     /**
      * Edit account password
      */
-    Route::get('/account/password/{id}', 'HomeController@editPassword')->name('account.password.edit');
-    Route::post('/account/password/{id}', 'HomeController@updatePassword')->name('account.password.update');
+    Route::get('/account/password/{id}', 'UserController@editPassword')->name('account.password.edit');
+    Route::post('/account/password/{id}', 'UserController@updatePassword')->name('account.password.update');
 
     /**
      * Upload photo
      */
-    Route::post('/account/profile_photo/{id}', 'HomeController@uploadProfilePhoto')->name('account.profilephoto.upload');
+    Route::post('/account/profile_photo/{id}', 'UserController@uploadProfilePhoto')->name('account.profilephoto.upload');
 
     Route::post('/education','EducationController@store')->name('education.store');
     Route::get('/education','EducationController@show')->name('education.show');
@@ -79,8 +81,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('user/{id}','UserController@view')->name('user.view');
 });
-
-Route::get('/search', 'UserController@search')->name('user.search');
 
 
 

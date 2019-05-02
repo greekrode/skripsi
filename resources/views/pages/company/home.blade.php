@@ -129,7 +129,8 @@
                                                 </span>
                                                 <span class="sub-title">{{ $job->city.', '.$job->country }}</span>
                                                 <span class="sub-title">{{ $job->type->name }} &#8226; {{ $job->seniority->name }}</span>
-                                                <span class="date">Posted at {{ date_format($job->created_at,'M jS, Y') }}</span>
+                                                <span class="date">Posted at {{ date_format($job->created_at,'M jS, Y') }}<br>
+                                                End at {{ date('M jS, Y', strtotime($job->end_date)) }}</span>
                                                 <span class="text">{{ $job->industry }}</span>
                                             </li>
                                         @else
@@ -154,7 +155,8 @@
                                                 </span>
                                                 <span class="sub-title">{{ $job->city.', '.$job->country }}</span>
                                                 <span class="sub-title">{{ $job->type->name }} &#8226; {{ $job->seniority->name }}</span>
-                                                <span class="date">Posted at {{ date_format($job->created_at,'M jS, Y') }}</span>
+                                                <span class="date">Posted at {{ date_format($job->created_at,'M jS, Y') }}<br>
+                                                End at {{ date('M jS, Y', strtotime($job->end_date)) }}</span>
                                                 <span class="text">{{ $job->industry }}</span>
                                             </li>
                                         @endif
@@ -326,6 +328,18 @@
                                 <span id="city"></span>
                                 <span id="type"></span>
                             </div>
+                            <div class="place inline-items" style="margin-top: 10px !important;">
+                                <svg class="olymp-add-a-place-icon">
+                                    <use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use>
+                                </svg>
+                                <span id="posted_date"></span>
+                            </div>
+                            <div class="place inline-items" style="margin-top: 10px !important;">
+                                <svg class="olymp-add-a-place-icon">
+                                    <use xlink:href="{{ asset('svg/icons.svg') }}#olymp-month-calendar-icon"></use>
+                                </svg>
+                                <span id="end_date"></span>
+                            </div>
                         </div>
 
                         <img class="poll-img" src="{{ asset('img/poll.png') }}" alt="screen">
@@ -334,49 +348,6 @@
                     <div class="edit-my-poll-content">
                         <div id="description-job" class="description-job">
                         </div>
-
-                        {{--<form class="resume-form">--}}
-                            {{--<h3>Submit Application</h3>--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
-                                    {{--<div class="form-group label-floating">--}}
-                                        {{--<label class="control-label">Your Name</label>--}}
-                                        {{--<input class="form-control" placeholder="" value="James Spiegel" type="text">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
-                                    {{--<div class="form-group label-floating">--}}
-                                        {{--<label class="control-label">Your Email</label>--}}
-                                        {{--<input class="form-control" placeholder="" value="jspiegel@yourmail.com" type="email">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
-                                    {{--<div class="form-group label-floating">--}}
-                                        {{--<label class="control-label">Portfolio URL</label>--}}
-                                        {{--<input class="form-control" placeholder="" value="spiegelcodes.com" type="text">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
-                                    {{--<div class="form-group with-button">--}}
-                                        {{--<input class="form-control" placeholder="Browse Resume..." value="" type="text">--}}
-                                        {{--<button class="bg-grey">--}}
-                                            {{--<svg class="olymp-computer-icon">--}}
-                                                {{--<use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>--}}
-                                            {{--</svg>--}}
-                                        {{--</button>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">--}}
-                                    {{--<div class="form-group label-floating is-empty">--}}
-                                        {{--<label class="control-label">Your Comment</label>--}}
-                                        {{--<textarea class="form-control" placeholder=""></textarea>--}}
-                                    {{--</div>--}}
-                                    {{--<a href="#" class="btn btn-primary btn-lg full-width">Submit Application</a>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</form>--}}
                     </div>
                 </div>
             </div>
@@ -401,14 +372,18 @@
                 },
                 success: function(response)
                 {
+                    let postedDate = new Date(response[0].created_at);
+                    let endDate = new Date(response[0].end_date);
                     $('#edit-my-poll-popup').bind('show.bs.modal', function() {
                         $("h2.title").html(response[0].title);
                         $("span#city").html((response[0].city + ', ' + response[0].country).toUpperCase());
                         $("span#type").html((response[1].name + ' &#8226; ' + response[2].name).toUpperCase());
+                        $("span#posted_date").html('POSTED: ' + postedDate.getDate() + '-' + (postedDate.getMonth() + 1) + '-' + postedDate.getFullYear());
+                        $("span#end_date").html('END: ' + endDate.getDate() + '-' + (endDate.getMonth()+1) + '-' + endDate.getFullYear());
                         $("#description-job").html(response[0].description);
                     });
                     $('#edit-my-poll-popup').modal();
-                    console.log(response);
+                    // console.log(response);
                 }
             });
         }
