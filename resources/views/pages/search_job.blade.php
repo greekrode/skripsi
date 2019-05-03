@@ -64,7 +64,7 @@
                             <span class="type bold">{{ $job->seniority->name }}</span>
                             <span class="type bold">{{ $job->type->name }}</span>
                             <span class="town-place">{{ $job->city.', '. $job->country }}</span>
-                            <span><a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#edit-my-poll-popup">Apply Now!</a></span>
+                            <span><a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#registration-login-form-popup">Apply Now!</a></span>
                         </li>
                     @endforeach
                 </ul>
@@ -123,8 +123,9 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="home1" role="tabpanel" data-mh="log-tab">
-                            <div class="title h6">Register to Olympus</div>
-                            <form class="content">
+                            <div class="title h6">Register to AlumniUPH</div>
+                            <form method="POST" action="{{ route('register') }}" class="content">
+                                @csrf
                                 <div class="row">
                                     <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group label-floating is-empty">
@@ -173,7 +174,7 @@
                                             </div>
                                         </div>
 
-                                        <a href="#" class="btn btn-purple btn-lg full-width">Complete Registration!</a>
+                                        <button type="submit" class="btn btn-purple btn-lg full-width">Complete Registration!</button>
                                     </div>
                                 </div>
                             </form>
@@ -206,15 +207,8 @@
 
                                         <a href="#" class="btn btn-lg btn-primary full-width">Login</a>
 
-                                        <div class="or"></div>
-
-                                        <a href="#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fab fa-facebook-f" aria-hidden="true"></i>Login with Facebook</a>
-
-                                        <a href="#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fab fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
-
-
                                         <p>Don’t you have an account?
-                                            <a href="#">Register Now!</a> it’s really simple and you can start enjoing all the benefits!
+                                            <a href="{{ route('register') }}">Register Now!</a> it’s really simple and you can start enjoing all the benefits!
                                         </p>
                                     </div>
                                 </div>
@@ -617,140 +611,5 @@
 
 
 
-<!-- Edit My Poll Popup -->
 
-<div class="modal fade" id="edit-my-poll-popup" tabindex="-1" role="dialog" aria-labelledby="edit-my-poll-popup" aria-hidden="true">
-    <div class="modal-dialog window-popup edit-my-poll-popup" role="document">
-        <div class="modal-content">
-            <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
-                <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>
-            </a>
-            <div class="modal-body">
-                <div class="control-block-button post-control-button">
-                    <a href="#" class="btn btn-control has-i bg-facebook">
-                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                    </a>
-
-                    <a href="#" class="btn btn-control has-i bg-twitter">
-                        <i class="fab fa-twitter" aria-hidden="true"></i>
-                    </a>
-                </div>
-
-                <div class="edit-my-poll-head bg-primary">
-                    <div class="head-content">
-                        <h2 class="title">Senior Developer</h2>
-                        <div class="place inline-items">
-                            <svg class="olymp-add-a-place-icon">
-                                <use xlink:href="{{ asset('svg/icons.svg') }}#olymp-add-a-place-icon"></use>
-                            </svg>
-                            <span>SAN FRANCISCO, CA</span>
-                            <span>FULL TIME</span>
-                        </div>
-                    </div>
-
-                    <img class="poll-img" src="img/poll.png" alt="screen">
-                </div>
-
-                <div class="edit-my-poll-content">
-                    <h3>Job Description</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.
-                    </p>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                        rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                        explicabo.
-                    </p>
-                    <h3>Requirements</h3>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident:</p>
-                    <ul class="list--styled smallest-icon icon-blue">
-                        <li>
-                            <i class="fa fa-circle" aria-hidden="true"></i>
-                            5 Years of experience on a simmilar position.
-                        </li>
-                        <li>
-                            <i class="fa fa-circle" aria-hidden="true"></i>
-                            Great knowledge of HTML, CSS, Java and other coding programs.
-                        </li>
-                        <li>
-                            <i class="fa fa-circle" aria-hidden="true"></i>
-                            Big portfolio of previously developed websites.
-                        </li>
-                        <li>
-                            <i class="fa fa-circle" aria-hidden="true"></i>
-                            Sublime Text knowledge is a plus.
-                        </li>
-                        <li>
-                            <i class="fa fa-circle" aria-hidden="true"></i>
-                            Great interpersonal skills and confortable talking in public.
-                        </li>
-                    </ul>
-
-                    <h3>Benefits</h3>
-                    <ul class="list--styled small-icon">
-                        <li>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            Competitive basic salary.
-                        </li>
-                        <li>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            Generous dental and health plans.
-                        </li>
-                        <li>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            Accruing vacation and sick days.
-                        </li>
-                    </ul>
-
-                    <form class="resume-form">
-                        <h3>Submit Application</h3>
-                        <div class="row">
-                            <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Your Name</label>
-                                    <input class="form-control" placeholder="" value="James Spiegel" type="text">
-                                </div>
-                            </div>
-                            <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Your Email</label>
-                                    <input class="form-control" placeholder="" value="jspiegel@yourmail.com" type="email">
-                                </div>
-                            </div>
-
-                            <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Portfolio URL</label>
-                                    <input class="form-control" placeholder="" value="spiegelcodes.com" type="text">
-                                </div>
-                            </div>
-
-                            <div class="col col-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="form-group with-button">
-                                    <input class="form-control" placeholder="Browse Resume..." value="" type="text">
-                                    <button class="bg-grey">
-                                        <svg class="olymp-computer-icon">
-                                            <use xlink:href="{{ asset('svg/icons.svg') }}#olymp-computer-icon"></use>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label">Your Comment</label>
-                                    <textarea class="form-control" placeholder=""></textarea>
-                                </div>
-                                <a href="#" class="btn btn-primary btn-lg full-width">Submit Application</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ... end Edit My Poll Popup -->
 @endsection

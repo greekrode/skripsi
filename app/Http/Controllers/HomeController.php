@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Job;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -18,7 +19,16 @@ class HomeController extends Controller
             return redirect()->route('home');
         }
 
-        return view('pages.welcome');
+        $topUsers = DB::table('users')
+                    ->select(DB::raw('count(awards.id) as point, users.id, users.first_name, users.last_name, users.profile_image, users.email, users.city, users.country, awards.verified'))
+                    ->join('awards', 'awards.user_id', '=', 'users.id')
+                    ->where('awards.verified', '=', 1)
+                    ->groupBy('users.id')
+                    ->orderBy('point', 'DESC')
+                    ->limit('6')
+                    ->get();
+
+        return view('pages.welcome')->with('topUsers', $topUsers);
     }
 
     public function userSearch()
