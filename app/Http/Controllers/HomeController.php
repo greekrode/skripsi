@@ -33,13 +33,13 @@ class HomeController extends Controller
 
     public function userSearch()
     {
-        $users = User::all();
+        $users = User::whereNotNull('email_verified_at')->where('type','user')->orderBy('created_at', 'DESC')->limit(10)->get();
         return view('pages.search_user')->with('users', $users);
     }
 
     public function jobSearch()
     {
-        $jobs = Job::where('end_date', '>', new \DateTime())->orderBy('created_at', 'DESC')->get();
+        $jobs = Job::where('end_date', '>', new \DateTime())->orderBy('created_at', 'DESC')->limit(10)->get();
         return view('pages.search_job')->with('jobs', $jobs);
     }
 }

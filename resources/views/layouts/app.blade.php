@@ -36,7 +36,7 @@
     @yield('content')
 
 <!-- JS Scripts -->
-@include('include.script')
+{{--@include('include.script')--}}
 {!! Toastr::render() !!}
 </body>
 </html>

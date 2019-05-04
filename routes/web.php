@@ -72,7 +72,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::delete('/job/{id}', 'JobController@destroy')->name('job.destroy');
 
     Route::get('/search/job', 'SearchController@job')->name('search.job');
+    Route::get('/search/user', 'SearchController@user')->name('search.user');
     Route::get('/search/filter', 'SearchController@filter')->name('search.filter');
+    Route::get('/search/filter_user', 'SearchController@filterUser')->name('search.filter_user');
 
     Route::get('/job_application', 'JobApplicationController@index')->name('job_application.show');
     Route::post('/job_application', 'JobApplicationController@create')->name('job_application.create');
@@ -80,6 +82,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/job_application/reject', 'JobApplicationController@reject')->name('job_application.reject');
 
     Route::get('user/{id}','UserController@view')->name('user.view');
+
+    Route::get('/stats', 'StatsController@index')->name('stats.index');
 });
 
 
