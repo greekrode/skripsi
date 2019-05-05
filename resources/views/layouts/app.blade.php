@@ -14,14 +14,10 @@
 <!-- ... end Fixed Sidebar Left -->
 
 
-<!-- Fixed Sidebar Right -->
-    @include('include.right-sidebar')
-<!-- ... end Fixed Sidebar Right -->
+{{--<!-- Fixed Sidebar Right -->--}}
+{{--    @include('include.right-sidebar')--}}
+{{--<!-- ... end Fixed Sidebar Right -->--}}
 
-
-<!-- Fixed Sidebar Right-Responsive -->
-    @include('include.right-sidebar-responsive')
-<!-- ... end Fixed Sidebar Right-Responsive -->
 
 
 <!-- Header-BP -->
@@ -36,7 +32,7 @@
     @yield('content')
 
 <!-- JS Scripts -->
-{{--@include('include.script')--}}
+@include('include.script')
 {!! Toastr::render() !!}
 </body>
 </html>

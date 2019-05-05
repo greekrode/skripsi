@@ -16,9 +16,15 @@
 
                 </li>
                 <li>
-                    <a href={{ route('search.job') }}>
-                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="JOB SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
-                    </a>
+                    @if (Auth::user()->type === 'user')
+                        <a href={{ route('search.job') }}>
+                            <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="JOB SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
+                        </a>
+                    @else
+                        <a href={{ route('search.user') }}>
+                            <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="USER SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
+                        </a>
+                    @endif
                 </li>
                 <li>
                     <a href="{{ route('job_application.show') }}">
@@ -53,10 +59,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href={{ route('search.job') }}>
-                        <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="JOB SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
-                        <span class="left-menu-title">Job Search</span>
-                    </a>
+                    @if (Auth::user()->type === 'user')
+                        <a href={{ route('search.job') }}>
+                            <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="JOB SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
+                            <span class="left-menu-title">Job Search</span>
+                        </a>
+                    @else
+                        <a href={{ route('search.user') }}>
+                            <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right"   data-original-title="USER SEARCH"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-newsfeed-icon"></use></svg>
+                            <span class="left-menu-title">User Search</span>
+                        </a>
+                    @endif
                 </li>
                 <li>
                     <a href="{{ route('job_application.show') }}">

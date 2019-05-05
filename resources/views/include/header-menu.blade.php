@@ -25,65 +25,26 @@
                         <li class="nav-item">
                             <a href="/" class="nav-link">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Users</a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" tabindex='1'>Profile</a>
+                            <a class="nav-link dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" tabindex='1'>Reach Us</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Profile Page</a>
-                                <a class="dropdown-item" href="#">Newsfeed</a>
-                                <a class="dropdown-item" href="#">Post Versions</a>
+                                <a class="dropdown-item" href="#">Contact Us</a>
+                                <a class="dropdown-item" href="#">About Us</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown dropdown-has-megamenu">
-                            <a href="#" class="nav-link dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false" tabindex='1'>Forums</a>
-                            <div class="dropdown-menu megamenu">
-                                <div class="row">
-                                    <div class="col col-sm-3">
-                                        <h6 class="column-tittle">Main Links</h6>
-                                        <a class="dropdown-item" href="#">Profile Page<span class="tag-label bg-blue-light">new</span></a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                    </div>
-                                    <div class="col col-sm-3">
-                                        <h6 class="column-tittle">BuddyPress</h6>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page<span class="tag-label bg-primary">HOT!</span></a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                    </div>
-                                    <div class="col col-sm-3">
-                                        <h6 class="column-tittle">Corporate</h6>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                    </div>
-                                    <div class="col col-sm-3">
-                                        <h6 class="column-tittle">Forums</h6>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                        <a class="dropdown-item" href="#">Profile Page</a>
-                                    </div>
-                                </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" tabindex='1'>Regulations</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Terms & Conditions</a>
+                                <a class="dropdown-item" href="#">FAQs</a>
+                                <a class="dropdown-item" href="#">Privacy Policy</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Terms & Conditions</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Privacy Policy</a>
                         </li>
                         <li class="close-responsive-menu js-close-responsive-menu">
                             <svg class="olymp-close-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-close-icon"></use></svg>

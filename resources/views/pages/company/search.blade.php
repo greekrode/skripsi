@@ -12,8 +12,8 @@
             <div class="row">
                 <div class="col col-lg-8 m-auto col-md-8 col-sm-12 col-12">
                     <div class="main-header-content">
-                        <h1>Search Your Job Here!</h1>
-                        <p>Here, you can search for job vacancy </p>
+                        <h1>Search All Users!</h1>
+                        <p>Here, you can search for the users.</p>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
         <div class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
             <div class="ui-block">
                 <div class="ui-block-title">
-                    <h6 class="title">Search Filter (Seniority / Position / Employment Type / Country)</h6>
+                    <h6 class="title">Search Filter (Name / Faculty / Major / City / Country)</h6>
                 </div>
                 <div class="ui-block-content">
 
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col col-12 col-xl-10 col-lg-10 col-md-10 col-sm-12">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Seniority / Position / Employment Type / Country</label>
+                                    <label class="control-label">Name / Faculty / Major / City / Country</label>
                                     <input class="form-control" placeholder="" value="" type="text" id="search_bar" name="search_bar" onkeyup="liveSearch()">
                                 </div>
                             </div>
@@ -65,23 +65,17 @@
                 <table class="forums-table">
                     <thead>
                         <tr>
-                            <th class="forum">
-                                Date Posted
+                            <th class="forum" style="text-align: center !important;">
+                                Full Name
                             </th>
                             <th class="company">
-                                Company
+                                Faculty
                             </th>
                             <th class="Position">
-                                Position
-                            </th>
-                            <th class="type">
-                                Type
-                            </th>
-                            <th class="type">
-                                Level
+                                Major
                             </th>
                             <th class="freshness">
-                                Place
+                                Location
                             </th>
                             <th class="apply">
                                 Action
@@ -172,7 +166,7 @@
 
         function searchJob(query) {
             $.ajax({
-                url: '{{ route('search.filter') }}',
+                url: '{{ route('search.filter_user') }}',
                 method: 'get',
                 data: {
                     query: query
@@ -189,29 +183,6 @@
             let query = document.getElementById('search_bar').value;
             console.log(query);
             searchJob(query);
-        }
-
-        function apply(id)
-        {
-            $('#description').empty();
-            $.ajax({
-                url: '{{ route('job.show') }}',
-                method: 'get',
-                data: {
-                    jobId: id
-                },
-                success: function (response) {
-                    $('#edit-my-poll-popup').bind('show.bs.modal', function() {
-                        $("#job_id").val(id);
-                        $("h2.title").html(response[0].title);
-                        $("span#city").html((response[0].city + ', ' + response[0].country).toUpperCase());
-                        $("span#type").html((response[1].name + ' &#8226; ' + response[2].name).toUpperCase());
-                        $("#description-job").html(response[0].description);
-                    });
-                    $('#edit-my-poll-popup').modal();
-                    console.log(response);
-                }
-            })
         }
     </script>
 

@@ -24,6 +24,10 @@ Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/user_search', 'HomeController@userSearch')->name('user.search');
 Route::get('/job_search', 'HomeController@jobSearch')->name('job.search');
 
+Route::get('/contact', function () {
+    return view('pages.contact');
+})->name('contact');
+
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', 'UserController@index')->name('home');
 

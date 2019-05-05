@@ -18,12 +18,18 @@
         <div class="control-block">
 
             <div class="control-icon more has-items">
-                <a href="{{ route('search.job') }}" style="fill: #ffffff;">
-                    <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
-                </a>
+                @if (Auth::user()->type === 'user')
+                    <a href="{{ route('search.job') }}" style="fill: #ffffff;">
+                        <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
+                    </a>
+                @else
+                    <a href="{{ route('search.user') }}" style="fill: #ffffff;">
+                        <svg class="olymp-magnifying-glass-icon"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-magnifying-glass-icon"></use></svg>
+                    </a>
+                @endif
 
             </div>
-            
+
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <img src="{{ Auth::user()->profile_image ? '/uploads/'.Auth::user()->profile_image : 'https://via.placeholder.com/124.png?text=Profile' }}" alt="avatar" class="avatar" width="35">
