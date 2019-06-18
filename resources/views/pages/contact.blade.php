@@ -13,7 +13,7 @@
             <h1 class="stunning-header-title">Contacts</h1>
             <ul class="breadcrumbs">
                 <li class="breadcrumbs-item">
-                    <a href="#">Contacts</a>
+                    <a href="#">Home</a>
                     <span class="icon breadcrumbs-custom">/</span>
                 </li>
                 <li class="breadcrumbs-item active">

@@ -6253,7 +6253,6 @@ fieldset[disabled] .checkbox input[type=checkbox] {
 
 .main-header {
     padding: 70px 0;
-    max-width: calc(100% - 140px);
     margin: 0 auto 30px;
     position: relative;
     background-position: 50% 50%

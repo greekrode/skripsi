@@ -82,18 +82,19 @@
 
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
+                                        
                                         <div class="form-group label-floating is-empty">
                                             <label class="control-label">Your Password</label>
                                             <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                             @if ($errors->has('password'))
                                                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
+                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
 
@@ -106,13 +107,27 @@
                                             <label class="control-label">Your Birthday</label>
                                             <input name="datetimepicker" id="birthday" value="{{ date_format(today(), 'd/m/Y') }}" class="datetimepicker" required/>
                                             <span class="input-group-addon">
-                                            <i class="fa fa-calendar-alt"></i>
-                                        </span>
+                                                <i class="fa fa-calendar-alt"></i>
+                                            </span>
 
                                             @if ($errors->has('datetimepicker'))
                                                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('datetimepicker') }}</strong>
-                                        </span>
+                                                    <strong>{{ $errors->first('datetimepicker') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="form-group label-floating is-select">
+                                            <label class="control-label">Role</label>
+                                            <select class="selectpicker form-control" name="type" id="type" onchange="genderHide(this)">
+                                                <option value="user">Student</option>
+                                                <option value="company">Company</option>
+                                            </select>
+
+                                            @if ($errors->has('type'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('type') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
 
@@ -125,8 +140,8 @@
 
                                             @if ($errors->has('gender'))
                                                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('gender') }}</strong>
-                                        </span>
+                                                    <strong>{{ $errors->first('gender') }}</strong>
+                                            </span>
                                             @endif
                                         </div>
 

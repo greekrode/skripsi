@@ -26,15 +26,15 @@
                             <a href="/" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Jobs</a>
+                            <a href="{{ route('job.search') }}" class="nav-link">Jobs</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Users</a>
+                            <a href="{{ route('user.search') }}" class="nav-link">Users</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" tabindex='1'>Reach Us</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Contact Us</a>
+                                <a class="dropdown-item" href="{{ route('contact') }}">Contact Us</a>
                                 <a class="dropdown-item" href="#">About Us</a>
                             </div>
                         </li>

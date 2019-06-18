@@ -16,9 +16,10 @@
             <div class="row display-flex">
                 <div class="col col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
                     <div class="landing-content">
-                        <h1>The Most Complete Social Network is Here!</h1>
-                        <p>We are the best and biggest social network with 5 billion active users all around the world. Share you
-                            thoughts, write blog posts, show your favourite music via Stopify, earn badges and much more!
+                        <h1>Welcome to Alumni UPH Network !</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis risus ut tellus congue euismod.
+                            In id ligula eu ipsum pulvinar eleifend sed nec turpis. Donec ullamcorper arcu non dignissim hendrerit.
+                            Etiam nunc ante, fringilla eu fringilla at, consequat ut lacus. Cras est elit, laoreet nec hendrerit ut, vehicula at quam.
                         </p>
                         <a href="{{ route('register') }}" class="btn btn-md btn-border c-white">Register Now</a>
                     </div>

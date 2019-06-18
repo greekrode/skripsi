@@ -54,12 +54,14 @@
                         <span class="left-menu-title">Job Application</span>
                     </a>
                 </li>
+                @if (Auth::user()->type === 'company')
                 <li>
                     <a href="{{ route('stats.index') }}">
                         <svg class="olymp-stats-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Account Stats"><use xlink:href="{{ asset('svg/icons.svg')}}#olymp-stats-icon"></use></svg>
                         <span class="left-menu-title">Stats</span>
                     </a>
                 </li>
+                @endif
             </ul>
 
             <div class="ui-block-title ui-block-title-small">

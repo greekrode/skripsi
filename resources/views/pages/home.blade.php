@@ -64,7 +64,7 @@
                             </a>
                             <div class="author-content">
                                 <a href="/home" class="h4 author-name">{{ $user->first_name.' '.$user->last_name }}</a>
-                                <div class="country">{{ $user->city.', '.$user->country }}</div>
+                                <div class="country">{{ $user->city ? $user->city.', '.$country->name : '' }}</div>
                                 <div class="country" style="font-weight: bold">Point: {{ $point }}</div>
                             </div>
                         </div>
@@ -220,6 +220,7 @@
                 <div class="ui-block">
                     <div class="ui-block-title">
                         <h4 class="title">Award / Certification</h4>
+                        <small><span style="color: green">Green</span>: Verified, <span style="color: red">Red</span>: Not Verified</small>
                         <a href="#" class="more" data-toggle="modal" data-target="#create-award"><svg class="olymp-plus-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-plus-icon"></use></svg></a>
 
                     </div>
@@ -234,43 +235,57 @@
                                     @foreach ($user->awards as $award)
                                         @if ($loop->first)
                                             <li>
-                                                <span class="title-edu">{{ $award->name }}</span>
-                                                <span class="edit-edu">
-                                                    <a id="edit-awd" href="#" onclick="editAwd({{ $award->id }});">
-                                                        <i class="fa fa-pencil-alt"></i>
-                                                    </a>
-                                                    <a href="{{ route('award.destroy', $award->id)}}"
-                                                       onclick="event.preventDefault();
-                                                        document.getElementById('delete-awd-form').submit();">
-                                                        <i class="fa fa-trash-alt"></i>
-                                                    </a>
-                                                    <form id="delete-awd-form" action="{{ route('award.destroy', $award->id)}}" method="POST" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
+                                                @if ($award->verified === 0) 
+                                                    <span class="title-edu" style="color: red;">{{ $award->name }}</span>
+                                                @else
+                                                    <span class="title-edu" style="color: green;">{{ $award->name }}</span>
+                                                @endif
+
+                                                @if ($award->verified === 0) 
+                                                    <span class="edit-edu">
+                                                        <a id="edit-awd" href="#" onclick="editAwd({{ $award->id }});">
+                                                            <i class="fa fa-pencil-alt"></i>
+                                                        </a>
+                                                        <a href="{{ route('award.destroy', $award->id)}}"
+                                                        onclick="event.preventDefault();
+                                                            document.getElementById('delete-awd-form').submit();">
+                                                            <i class="fa fa-trash-alt"></i>
+                                                        </a>
+                                                        <form id="delete-awd-form" action="{{ route('award.destroy', $award->id)}}" method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                     </span>
+                                                @endif
                                                 <span class="sub-title">{{ $award->organization }}</span>
                                                 <span class="date">{{ $award->start_date.' - '.$award->end_date }}</span>
                                                 <span class="text">{{ $award->description }}</span>
                                             </li>
                                         @else
                                             <li class="edu-hover">
-                                                <span class="title-edu">{{ $award->name }}</span>
-                                                <span class="edit-edu">
-                                                    <a id="edit-awd" href="#" onclick="editAwd({{ $award->id }});">
-                                                        <i class="fa fa-pencil-alt"></i>
-                                                    </a>
-                                                    <a href="{{ route('award.destroy', $award->id)}}"
-                                                       onclick="event.preventDefault();
-                                                        document.getElementById('delete-awd-form').submit();">
-                                                        <i class="fa fa-trash-alt"></i>
-                                                    </a>
-                                                    <form id="delete-awd-form" action="{{ route('award.destroy', $award->id)}}" method="POST" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
+                                                @if ($award->verified === 0) 
+                                                    <span class="title-edu" style="color: red;">{{ $award->name }}</span>
+                                                @else
+                                                    <span class="title-edu" style="color: green;">{{ $award->name }}</span>
+                                                @endif
+
+                                                @if ($award->verified === 0) 
+                                                    <span class="edit-edu">
+                                                        <a id="edit-awd" href="#" onclick="editAwd({{ $award->id }});">
+                                                            <i class="fa fa-pencil-alt"></i>
+                                                        </a>
+                                                        <a href="{{ route('award.destroy', $award->id)}}"
+                                                        onclick="event.preventDefault();
+                                                            document.getElementById('delete-awd-form').submit();">
+                                                            <i class="fa fa-trash-alt"></i>
+                                                        </a>
+                                                        <form id="delete-awd-form" action="{{ route('award.destroy', $award->id)}}" method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                        </span>
                                                     </span>
-                                                </span>
+                                                @endif
                                                 <span class="sub-title">{{ $award->organization }}</span>
                                                 <span class="date">{{ $award->start_date.' - '.$award->end_date }}</span>
                                                 <span class="text">{{ $award->description }}</span>
@@ -289,6 +304,7 @@
                 <div class="ui-block">
                     <div class="ui-block-title">
                         <h4 class="title">Student Certificates</h4>
+                        <small><span style="color: green">Green</span>: Verified, <span style="color: red">Red</span>: Not Verified</small>
                         <a href="#" class="more" data-toggle="modal" data-target="#create-certificate"><svg class="olymp-plus-icon"><use xlink:href="{{ asset('svg/icons.svg') }}#olymp-plus-icon"></use></svg></a>
 
                     </div>
@@ -303,41 +319,55 @@
                                     @foreach ($user->certificates as $certificate)
                                         @if ($loop->first)
                                             <li>
-                                                <span class="title-edu">{{ $certificate->name }}</span>
-                                                <span class="edit-edu">
-                                                    <a id="edit-cert" href="#" onclick="editCert({{ $certificate->id }});">
-                                                        <i class="fa fa-pencil-alt"></i>
-                                                    </a>
-                                                    <a href="{{ route('certificate.destroy', $certificate->id)}}"
-                                                       onclick="event.preventDefault();
-                                                        document.getElementById('delete-cert-form').submit();">
-                                                        <i class="fa fa-trash-alt"></i>
-                                                    </a>
-                                                    <form id="delete-cert-form" action="{{ route('certificate.destroy', $certificate->id)}}" method="POST" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
-                                                </span>
+                                                @if ($certificate->verified === 0) 
+                                                    <span class="title-edu" style="color: red">{{ $certificate->name }}</span>
+                                                @else
+                                                    <span class="title-edu" style="color: green">{{ $certificate->name }}</span>
+                                                @endif
+
+                                                @if ($certificate->verified === 0) 
+                                                    <span class="edit-edu">
+                                                        <a id="edit-cert" href="#" onclick="editCert({{ $certificate->id }});">
+                                                            <i class="fa fa-pencil-alt"></i>
+                                                        </a>
+                                                        <a href="{{ route('certificate.destroy', $certificate->id)}}"
+                                                        onclick="event.preventDefault();
+                                                            document.getElementById('delete-cert-form').submit();">
+                                                            <i class="fa fa-trash-alt"></i>
+                                                        </a>
+                                                        <form id="delete-cert-form" action="{{ route('certificate.destroy', $certificate->id)}}" method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                    </span>
+                                                @endif
                                                 <span class="date">{{ $certificate->date }}</span>
                                                 <span class="text">{{ $certificate->notes }}</span>
                                             </li>
                                         @else
                                             <li class="edu-hover">
-                                                <span class="title-edu">{{ $certificate->name }}</span>
-                                                <span class="edit-edu">
-                                                    <a id="edit-cert" href="#" onclick="editCert({{ $certificate->id }});">
-                                                        <i class="fa fa-pencil-alt"></i>
-                                                    </a>
-                                                    <a href="{{ route('certificate.destroy', $certificate->id)}}"
-                                                       onclick="event.preventDefault();
-                                                        document.getElementById('delete-cert-form').submit();">
-                                                        <i class="fa fa-trash-alt"></i>
-                                                    </a>
-                                                    <form id="delete-cert-form" action="{{ route('certificate.destroy', $certificate->id)}}" method="POST" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
-                                                </span>
+                                                @if ($certificate->verified === 0) 
+                                                    <span class="title-edu" style="color: red">{{ $certificate->name }}</span>
+                                                @else
+                                                    <span class="title-edu" style="color: green">{{ $certificate->name }}</span>
+                                                @endif
+
+                                                @if ($certificate->verified === 0) 
+                                                    <span class="edit-edu">
+                                                        <a id="edit-cert" href="#" onclick="editCert({{ $certificate->id }});">
+                                                            <i class="fa fa-pencil-alt"></i>
+                                                        </a>
+                                                        <a href="{{ route('certificate.destroy', $certificate->id)}}"
+                                                        onclick="event.preventDefault();
+                                                            document.getElementById('delete-cert-form').submit();">
+                                                            <i class="fa fa-trash-alt"></i>
+                                                        </a>
+                                                        <form id="delete-cert-form" action="{{ route('certificate.destroy', $certificate->id)}}" method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                    </span>
+                                                @endif
                                                 <span class="date">{{ $certificate->date }}</span>
                                                 <span class="text">{{ $certificate->notes }}</span>
                                             </li>
@@ -367,8 +397,7 @@
                         <ul class="widget w-personal-info">
                             <li>
                                 <span class="title">About Me:</span>
-                                <span class="text">{{ $user->about }}
-												</span>
+                                <span class="text">{{ $user->about }}</span>
                             </li>
                             <li>
                                 <span class="title">Birthday:</span>
@@ -380,7 +409,7 @@
                             </li>
                             <li>
                                 <span class="title">Lives in:</span>
-                                <span class="text">{{ $user->city.', '. $country->name }}</span>
+                                <span class="text">{{ $user->city ? $user->city.', '.$country->name : '' }}</span>
                             </li>
                             <li>
                                 <span class="title">Occupation:</span>

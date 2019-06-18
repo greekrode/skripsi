@@ -50,6 +50,7 @@ class UserController extends Controller
         return view('pages.company.home')->with($data);
 
     }
+
     public function view($id)
     {
         $user = User::find($id);

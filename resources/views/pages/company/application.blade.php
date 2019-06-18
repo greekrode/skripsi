@@ -71,11 +71,9 @@
                                     </td>
                                     <td style="text-align: center">
                                         @if ($jobapp->accepted === 1 || $jobapp->rejected === 1)
-                                            <button class="btn btn-grey btn-sm">Show</button>
                                         @else
                                             <button class="btn btn-green btn-sm" onclick="acceptJob({{ $jobapp->id }})" >Accept</button>
                                             <button class="btn btn-primary btn-sm" onclick="rejectJob({{ $jobapp->id }})" >Reject</button>
-                                            <button class="btn btn-grey btn-sm">Show</button>
                                         @endif
                                     </td>
                                 </tr>

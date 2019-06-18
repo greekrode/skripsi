@@ -137,10 +137,10 @@ class SearchController extends Controller
                     ->select('users.id', 'users.first_name', 'users.last_name', 'users.email', 'faculties.name as fName', 'majors.name as mName', 'users.city', 'users.country')
                     ->join('faculties', 'users.faculty_id', '=', 'faculties.id')
                     ->join('majors', 'users.major_id', '=', 'majors.id')
-                    ->where('users.first_name', 'like', '%'.$query.'%')
-                    ->where('users.last_name', 'like', '%'.$query.'%')
-                    ->orWhere('faculty.name', 'like', '%'.$query.'%')
-                    ->orWhere('major.name', 'like', '%'.$query.'%')
+                    ->orWhere('users.first_name', 'like', '%'.$query.'%')
+                    ->orWhere('users.last_name', 'like', '%'.$query.'%')
+                    ->orWhere('faculties.name', 'like', '%'.$query.'%')
+                    ->orWhere('majors.name', 'like', '%'.$query.'%')
                     ->orWhere('users.city', 'like', '%'.$query.'%')
                     ->orWhere('users.country', 'like', '%'.$query.'%')
                     ->get();
@@ -159,7 +159,7 @@ class SearchController extends Controller
                     $response .= '
                     <tr>
                         <td class="forum" style="text-align: center !important;">
-                            '.$user->first_name.' '.$user->last_name.'
+                            <a href="/user/'.$user->id.'">'.$user->first_name.' '.$user->last_name.'</a>
                         </td>
                         <td class="topics">
                             '.$user->fName.'
