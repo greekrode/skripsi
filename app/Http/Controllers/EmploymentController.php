@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Employment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Kamaln7\Toastr\Facades\Toastr;
 
 class EmploymentController extends Controller
 {

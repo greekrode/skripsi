@@ -78,7 +78,7 @@
                             </a>
                             <div class="author-content">
                                 <a href="/home" class="h4 author-name">{{ $user->first_name.' '.$user->last_name }}</a>
-                                <div class="country">Medan, ID</div>
+                                <div class="country">{{ $user->city ? $user->city.', '.$country->name : '' }}</div>
                             </div>
                         </div>
                     </div>

@@ -17,10 +17,7 @@
                 <div class="col col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
                     <div class="landing-content">
                         <h1>Welcome to Alumni UPH Network !</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis risus ut tellus congue euismod.
-                            In id ligula eu ipsum pulvinar eleifend sed nec turpis. Donec ullamcorper arcu non dignissim hendrerit.
-                            Etiam nunc ante, fringilla eu fringilla at, consequat ut lacus. Cras est elit, laoreet nec hendrerit ut, vehicula at quam.
-                        </p>
+                        <p>Sign up now and join us in this alumni network. You can contact your fellow alumni and also seek for jobs!</p>
                         <a href="{{ route('register') }}" class="btn btn-md btn-border c-white">Register Now</a>
                     </div>
                 </div>

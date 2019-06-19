@@ -31,8 +31,9 @@ class UserController extends Controller
         }
 
         $user = Auth::user();
+        $country = Country::where('code', $user->country)->first();
+
         if ($user->type === 'user') {
-            $country = Country::where('code', $user->country)->first();
             $award = Award::where('user_id', Auth::user()->id)->where('verified', 1)->get();
             $data = [
                 'user' => $user,
@@ -44,7 +45,8 @@ class UserController extends Controller
         }
 
         $data = [
-            'user' => $user
+            'user' => $user,
+            'country' => $country,
         ];
 
         return view('pages.company.home')->with($data);

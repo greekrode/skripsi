@@ -20,7 +20,7 @@ class HomeController extends Controller
         }
 
         $topUsers = DB::table('users')
-                    ->select(DB::raw('count(awards.id) as point, users.id, users.first_name, users.last_name, users.profile_image, users.email, users.city, users.country, awards.verified'))
+                    ->select(DB::raw('count(awards.id) as point, users.id, users.first_name, users.last_name, users.profile_image, users.email, users.city, users.country, awards.verified, users.about'))
                     ->join('awards', 'awards.user_id', '=', 'users.id')
                     ->where('awards.verified', '=', 1)
                     ->groupBy('users.id')

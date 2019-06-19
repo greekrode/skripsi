@@ -136,12 +136,14 @@
 
                                 <ul class="widget w-personal-info item-block">
                                     @foreach ($user->awards as $award)
-                                        <li>
-                                            <span class="title-edu">{{ $award->name }}</span>
-                                            <span class="sub-title">{{ $award->organization }}</span>
-                                            <span class="date">{{ $award->start_date.' - '.$award->end_date }}</span>
-                                            <span class="text">{{ $award->description }}</span>
-                                        </li>
+                                        @if($award->verified === 1)
+                                            <li>
+                                                <span class="title-edu">{{ $award->name }}</span>
+                                                <span class="sub-title">{{ $award->organization }}</span>
+                                                <span class="date">{{ $award->start_date.' - '.$award->end_date }}</span>
+                                                <span class="text">{{ $award->description }}</span>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
 

@@ -16,10 +16,7 @@
             <div class="col col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
                 <div class="landing-content">
                     <h1>Welcome to Alumni UPH Network !</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis risus ut tellus congue euismod.
-                        In id ligula eu ipsum pulvinar eleifend sed nec turpis. Donec ullamcorper arcu non dignissim hendrerit.
-                        Etiam nunc ante, fringilla eu fringilla at, consequat ut lacus. Cras est elit, laoreet nec hendrerit ut, vehicula at quam.
-                    </p>
+                    <p>Sign up now and join us in this alumni network. You can contact your fellow alumni and also seek for jobs!</p>
                     <a href="{{ route('register') }}" class="btn btn-md btn-border c-white">Register Now!</a>
                 </div>
             </div>
@@ -231,9 +228,7 @@
             <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
                 <div class="crumina-module crumina-heading">
                     <h2 class="heading-title">Why Join <span class="c-primary">Alumni UPH</span>?</h2>
-                    <p class="heading-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa.
-                    </p>
+                    <p class="heading-text">You can connect with each other to keep in contact. Plus, you can seek for jobs from top company.</p>
                 </div>
             </div>
         </div>
@@ -246,9 +241,7 @@
             <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
                 <div class="crumina-module crumina-heading">
                     <h2 class="heading-title">Search and Contact <span class="c-primary"> Our Alumni</span></h2>
-                    {{--<p class="heading-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.--}}
-                        {{--Excepteur sint occaecat cupidatat non proident, sunt in culpa.--}}
-                    {{--</p>--}}
+                    <p class="heading-text">Search for our best alumni and contact them.</p>
                     <a href="{{ route('user.search') }}" class="btn btn-primary btn-md">Search Now!</a>
                 </div>
             </div>
@@ -271,9 +264,7 @@
             <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
                 <div class="crumina-module crumina-heading">
                     <h2 class="heading-title">Search for <span class="c-primary"> Job Now</span></h2>
-{{--                    <p class="heading-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.--}}
-{{--                        Excepteur sint occaecat cupidatat non proident, sunt in culpa.--}}
-{{--                    </p>--}}
+                    <p class="heading-text">Seek for jobs from  top company</p>
                     <a href="{{ route('job.search') }}" class="btn btn-primary btn-md">Search Now!</a>
                 </div>
             </div>
@@ -282,65 +273,65 @@
 </section>
 
 
-
 <!-- Planer Animation -->
 
 <section class="medium-padding120 bg-section3 background-cover planer-animation">
-    <div class="container">
-        <div class="row mb60">
-            <div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
-                <div class="crumina-module crumina-heading align-center">
-                    <div class="heading-sup-title">Featured Users</div>
-                    <h2 class="h1 heading-title">Most Awarded Users</h2>
-                    <p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
-                </div>
-            </div>
-        </div>
+	<div class="container">
+		<div class="row mb60">
+			<div class="col col-xl-4 col-lg-4 m-auto col-md-12 col-sm-12 col-12">
+				<div class="crumina-module crumina-heading align-center">
+					<div class="heading-sup-title">SOCIAL NETWORK</div>
+					<h2 class="h1 heading-title">Community Reviews</h2>
+					<p class="heading-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+				</div>
+			</div>
+		</div>
 
-        <div class="row">
-            <div class="swiper-container pagination-bottom" data-show-items="{{ count($topUsers) }}">
-                <div class="swiper-wrapper">
-                    <div class="ui-block swiper-slide">
+		<div class="row">
+			<div class="swiper-container pagination-bottom" data-show-items="3">
+				<div class="swiper-wrapper">
+                @foreach($topUsers as $topUser)
+					<div class="ui-block swiper-slide">
 
-                        @foreach($topUsers as $topUser)
-                        <!-- Featured Users Item-->
-
-                        <div class="crumina-module crumina-testimonial-item">
-                            <div class="testimonial-header-thumb"></div>
-
-                            <div class="testimonial-item-content">
-
-                                <div class="author-thumb">
+						
+						<!-- Testimonial Item -->
+						
+						<div class="crumina-module crumina-testimonial-item">
+							<div class="testimonial-header-thumb"></div>
+						
+							<div class="testimonial-item-content">
+						
+								<div class="author-thumb">
                                     <img src="{{ $topUser->profile_image ? '/uploads/'.$topUser->profile_image : 'https://via.placeholder.com/124.png?text=Profile' }}" alt="author" width="100">
-                                </div>
-
-                                <h3 class="testimonial-title">{{ $topUser->first_name.' '.$topUser->last_name }}</h3>
-
-                                <ul class="rait-stars">
+								</div>
+						
+								<h3 class="testimonial-title">{{ $topUser->first_name.' '.$topUser->last_name }}</h3>
+						
+								<ul class="rait-stars">
                                     Points: {{ $topUser->point }}
                                 </ul>
-
-                                <div class="author-content">
+						
+								<p class="testimonial-message">{{ $topUser->about ? $topUser->about : ' '}}
+								</p>
+						
+								<div class="author-content">
                                     <a href="mailto:{{ $topUser->email }}" class="h6 author-name">{{ $topUser->email }}</a>
                                     <div class="country">{{ $topUser->city.', '.$topUser->country }}</div>
                                 </div>
+							</div>
+						</div>
+						
+						<!-- ... end Testimonial Item -->
+					</div>
+                @endforeach
+				</div>
 
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
 
-                                <p class="testimonial-message" style="visibility: hidden;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- ... end Featured Users Item-->
-                        @endforeach
-                    </div>
-
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
+	<img src="img/planer.png" alt="planer" class="planer">
 </section>
 
 <!-- ... end Section Planer Animation -->

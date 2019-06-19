@@ -59,11 +59,11 @@
                     @foreach ($users as $user)
                     <li>
                         <span class="date">{{ $user->first_name.' '.$user->last_name }}</span>
-                        <span class="position bold">{{ $user->faculty->name }}</span>
+                        <span class="position bold">{{ $user->faculty ? $user->faculty->name :'' }}</span>
                         <span class="type bold">{{ $user->major ? $user->major->name : ''}}</span>
                         <span class="town-place">{{ $user->city.', '.$user->country}}</span>
                         <span>
-                            <a href="#" class="btn btn-primary btn-sm full-width" data-toggle="modal" data-target="#edit-my-poll-popup">Contact Now!</a>
+                            <a href="mailto:{{ $user->email }}" class="btn btn-primary btn-sm full-width" target="_blank">Contact Now!</a>
                         </span>
                     </li>
                     @endforeach
@@ -82,7 +82,7 @@
     <div class="container">
         <div class="row">
             <div class="col col-xl-10 m-auto col-lg-10 col-md-12 col-sm-12 col-12">
-                <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registration-login-form-popup">Start Making Friends Now!</a>
+                <a href="{{ route('register') }}" class="btn btn-primary btn-lg">Start Making Friends Now!</a>
             </div>
         </div>
     </div>

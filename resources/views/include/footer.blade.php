@@ -19,7 +19,7 @@
                             <div class="sub-title">SOCIAL NETWORK</div>
                         </div>
                     </a>
-                    <p>Lorem ipsum dolor sit amet, consect adipisicing elit, sed do eiusmod por incidid ut labore et lorem.</p>
+                    <p>Join and connect with us!</p>
                     <ul class="socials">
                         <li>
                             <a href="#">
