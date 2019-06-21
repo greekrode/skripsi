@@ -34,48 +34,46 @@ class JobApplicationController extends Controller
     }
 
     public function create(Request $request)
-    {
+    {    
         $description = $request->description;
         $job = Job::find($request->job_id);
         $user = User::find(Auth::user()->id);
 
-        if ($request->hasFile('resume')) {
-            $allowedfileExtension = ['pdf','jpg','png','docx'];
-            $file = $request->file('resume');
-            $extension = $file->getClientOriginalExtension();
-            $check = in_array($extension, $allowedfileExtension, true);
 
-            if ($check) {
-                $filename = $file->store('resume');
+        $allowedfileExtension = ['pdf','jpg','png','docx'];
+        $file = $request->file('resume');
 
-                $jobApplication = new JobApplication();
-                $jobApplication->description = $description;
-                $jobApplication->user_id = Auth::user()->id;
-                $jobApplication->job_id = $request->job_id;
-                $jobApplication->filename = $filename;
-
-                Mail::to($job->user->email)->send(new JobMail($jobApplication, $user, $file));
-
-                $jobApplication->save();
-
-                Toastr::success('Successfully applied for a job', 'Success');
-                return redirect()->route('search.job');
-            }
-
-            Toastr::success('File extension must be jpg, pdf, png or docx only', 'Fail');
+        if (!$file) {
+            Toastr::error('Resume is required!', 'Fail');
             return redirect()->route('search.job');
         }
 
-        $jobApplication = new JobApplication();
-        $jobApplication->description = $description;
-        $jobApplication->user_id = Auth::user()->id;
-        $jobApplication->job_id = $request->job_id;
+        if ( ($file->getSize() / 1000000) > 5 ) {
+            Toastr::error('File size must not excdeed 5MB!', 'Fail');
+            return redirect()->route('search.job');
+        }
 
-        Mail::to($job->user->email)->send(new JobMail($jobApplication, $user, null));
+        $extension = $file->getClientOriginalExtension();
+        $check = in_array($extension, $allowedfileExtension, true);
 
-        $jobApplication->save();
+        if ($check) {
+            $filename = $file->store('resume');
 
-        Toastr::success('Successfully applied for a job', 'Success');
+            $jobApplication = new JobApplication();
+            $jobApplication->description = $description;
+            $jobApplication->user_id = Auth::user()->id;
+            $jobApplication->job_id = $request->job_id;
+            $jobApplication->filename = $filename;
+
+            Mail::to($job->user->email)->send(new JobMail($jobApplication, $user, $file));
+
+            $jobApplication->save();
+
+            Toastr::success('Successfully applied for a job', 'Success');
+            return redirect()->route('search.job');
+        }
+
+        Toastr::error('File extension must be jpg, pdf, png or docx only', 'Fail');
         return redirect()->route('search.job');
     }
 

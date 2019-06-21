@@ -34,7 +34,15 @@
                     <h6 class="title">Search Filter (Seniority / Position / Employment Type / Country)</h6>
                 </div>
                 <div class="ui-block-content">
-
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <!-- Search Form -->
                     <form>
                         <div class="row">
@@ -145,6 +153,7 @@
                                     <div class="form-group">
                                         <label class="control-label">Your Resume / CV</label>
                                         <input class="form-control" type="file" id="resume" name="resume" value="">
+                                        <small>File size must not exceed 5MB.</small>
                                     </div>
                                 </div>
                                 <div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
