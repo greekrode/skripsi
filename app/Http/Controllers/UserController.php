@@ -203,14 +203,27 @@ class UserController extends Controller
     {
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
-        Storage::disk('public')->put($image->getFilename().'.'.$extension, File::get($image));
+        $allowedfileExtension = ['png','jpg','bmp'];
+        $check = in_array($extension, $allowedfileExtension, true);
 
-        $user = User::find($id);
-        $user->profile_mime = $image->getClientMimeType();
-        $user->profile_original_image = $image->getClientOriginalName();
-        $user->profile_image = $image->getFilename().'.'.$extension;
-        $user->save();
+        if ( ($image->getSize() / 1000000) > 5 ) {
+            Toastr::error('File size must not excdeed 5MB!', 'Fail');
+            return redirect()->back();
+        }
 
+        if ($check) {
+            Storage::disk('public')->put($image->getFilename().'.'.$extension, File::get($image));
+
+            $user = User::find($id);
+            $user->profile_mime = $image->getClientMimeType();
+            $user->profile_original_image = $image->getClientOriginalName();
+            $user->profile_image = $image->getFilename().'.'.$extension;
+            $user->save();
+
+            return redirect()->back();
+        }
+
+        Toastr::error('File extension must be jpg, png or bmp only', 'Fail');
         return redirect()->back();
     }
 }
