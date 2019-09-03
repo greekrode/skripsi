@@ -22,6 +22,8 @@ class CreateEducationsTable extends Migration
             $table->integer('start_year')->nullable();
             $table->integer('end_year')->nullable();
             $table->longText('description')->nullable();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

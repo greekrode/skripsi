@@ -17,6 +17,10 @@ class CreateJobApplicationsTable extends Migration
             $table->increments('id');
             $table->string('filename')->nullable();
             $table->longText('description')->nullable();
+            $table->unsignedInteger('job_id');
+            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

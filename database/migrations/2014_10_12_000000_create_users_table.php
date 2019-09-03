@@ -38,6 +38,10 @@ class CreateUsersTable extends Migration
             $table->string('twitter')->nullable();
             $table->string('linked_in')->nullable();
             $table->string('instagram')->nullable();
+            $table->unsignedInteger('faculty_id');
+            $table->foreign('faculty_id')->references('id')->on('faculties');
+            $table->unsignedInteger('major_id');
+            $table->foreign('major_id')->references('id')->on('majors');
             $table->rememberToken();
             $table->timestamps();
         });

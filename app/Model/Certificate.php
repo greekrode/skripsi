@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Certificate extends Model
 {
     protected $fillable = [
-        'name', 'date', 'notes', 'link'
+        'name', 'date', 'notes', 'link', 'user_id'
     ];
 
     public function user()

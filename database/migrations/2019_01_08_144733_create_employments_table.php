@@ -21,6 +21,8 @@ class CreateEmploymentsTable extends Migration
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
             $table->longText('description')->nullable();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

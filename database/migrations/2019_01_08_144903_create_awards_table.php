@@ -24,6 +24,8 @@ class CreateAwardsTable extends Migration
             $table->string('mime')->nullable();
             $table->string('original_image')->nullable();
             $table->string('link')->nullable();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

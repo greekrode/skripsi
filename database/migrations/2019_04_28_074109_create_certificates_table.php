@@ -19,6 +19,8 @@ class CreateCertificatesTable extends Migration
             $table->string('date');
             $table->longText('notes');
             $table->string('link');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
